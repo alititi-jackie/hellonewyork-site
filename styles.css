@@ -57,3 +57,8 @@
  .section.wrap{padding-top:56px;padding-bottom:56px}
  .band,.resources{padding-top:60px;padding-bottom:60px}
 }
+
+/* Quiet text link for the OpenAA network entrance. */
+.nav-cta{border:0;border-radius:0;padding:9px 0;background:transparent;color:var(--ink);font-size:14px;font-weight:700;letter-spacing:.015em}
+.nav-cta:hover{background:transparent;color:var(--orange)}
+@media(max-width:700px){.nav-cta{padding:8px 0;font-size:13px}}
