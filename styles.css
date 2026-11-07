@@ -32,7 +32,7 @@
 .hero-full .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 48%;z-index:-2}
 .hero-full:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(8,28,39,.79) 0%,rgba(8,28,39,.55) 38%,rgba(8,28,39,.1) 76%),linear-gradient(0deg,rgba(8,28,39,.23),transparent 60%)}
 .hero-full .hero-overlay{display:flex;align-items:flex-start;width:min(1160px,calc(100% - 48px))}
-.hero-full .hero-copy{padding:104px 0 94px;max-width:750px;color:#fff}
+.hero-full .hero-copy{padding:54px 0 94px;max-width:750px;color:#fff}
 .hero-full h1{margin:0;letter-spacing:0;line-height:1.22}
 .hero-full .hero-english{display:block;font-family:'DM Sans',sans-serif;font-size:clamp(46px,6.3vw,90px);font-weight:800;letter-spacing:-.065em;line-height:1.07;margin-bottom:29px}
 .hero-full .hero-slogan{display:block;font-size:clamp(30px,3.25vw,46px);font-weight:700;letter-spacing:-.04em;line-height:1.42}
@@ -49,7 +49,7 @@
  .hero-full .hero-overlay{width:calc(100% - 36px)}
  .hero-full .hero-photo{object-position:57% center}
  .hero-full:before{background:linear-gradient(90deg,rgba(8,28,39,.77),rgba(8,28,39,.35)),linear-gradient(0deg,rgba(8,28,39,.45),transparent 65%)}
- .hero-full .hero-copy{padding:80px 0 64px;max-width:100%}
+ .hero-full .hero-copy{padding:42px 0 64px;max-width:100%}
  .hero-full .hero-english{font-size:clamp(43px,10.4vw,64px);margin-bottom:29px}
  .hero-full .hero-slogan{font-size:clamp(29px,7vw,37px)}
  .hero-full .hero-rule{margin:25px 0 20px}
