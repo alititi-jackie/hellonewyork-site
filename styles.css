@@ -110,3 +110,9 @@
  .hero-full .hero-photo{object-position:60% 67%}
  .hero-full .hero-copy{padding:18px 0 38px}
 }
+
+/* Anchor hero text to the photo itself, independent of flex alignment. */
+.hero-full{position:relative}
+.hero-full .hero-overlay{position:absolute;top:0;left:50%;transform:translateX(-50%);margin:0;display:block;height:auto;z-index:2}
+.hero-full .hero-copy{padding-top:18px;margin:0}
+@media(max-width:700px){.hero-full .hero-copy{padding-top:14px}}
