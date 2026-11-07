@@ -3,3 +3,23 @@
 @media(max-width:900px){.nav nav{gap:15px}.nav nav a{font-size:12px}.hero-inner{grid-template-columns:1fr 43%}.hero-copy{padding-top:85px}.sun{right:-60px}.art-word{font-size:90px}}
 @media(max-width:700px){.wrap{width:min(100% - 36px,560px)}.nav{height:68px}.brandmark{width:42px;height:42px}.nav nav{display:none}.nav-cta{padding:9px 13px;font-size:12px}.hero-inner{display:flex;flex-direction:column}.hero-copy{padding:56px 0 40px}.hero-text{font-size:14px}.hero-note{margin-top:32px}.hero-art{min-height:250px;margin:0 -18px}.sun{width:175px;height:175px;top:20px;right:65px}.skyline{height:70%}.art-word{font-size:70px}.intro{padding:65px 0;display:block}.intro>span{margin-bottom:24px}.section{padding:65px 0}.section-head{align-items:start}.subline{display:none}.cards,.topics,.explore-grid,.resource-grid{grid-template-columns:1fr}.guide-card{min-height:230px}.card-icon{margin-bottom:30px}.band,.resources{padding:65px 0}.topics a{padding:20px;min-height:87px}.feature{min-height:280px}.feature.small{min-height:230px}.resource-grid{gap:28px}.closing{padding:85px 0}.foot{flex-direction:column}.footer-right{text-align:left}.disclaimer{margin-top:30px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+/* Brand lettering fills the original logo footprint without enlarging the header. */
+.brandmark{font-size:27px;letter-spacing:-2.6px;line-height:1;padding-right:2px}
+.brandmark span{font-size:12px;right:3px;top:3px}
+.brandwords b{font-size:16px;letter-spacing:.055em}
+.brandwords small{font-size:12px;letter-spacing:.18em}
+
+/* Documentary photography replaces decorative skyline shapes. */
+.hero-art{background:#78909a}
+.hero-art>img{display:block;width:100%;height:100%;position:absolute;inset:0;object-fit:cover;object-position:50% 50%}
+.hero-art:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,33,48,.2),transparent 42%,rgba(6,33,48,.47));pointer-events:none}
+.hero-art .art-caption,.hero-art .art-word{z-index:1;color:white;text-shadow:0 2px 16px #11364b99}
+.hero-art .art-word{font-size:clamp(64px,8vw,115px);opacity:.9}
+.feature>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
+.feature:hover>img{transform:scale(1.035)}
+.feature:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,32,49,.35),rgba(9,32,49,.2) 30%,rgba(9,32,49,.87));pointer-events:none}
+.feature.small,.feature.big{color:white}
+.feature .feature-tag,.feature>div{position:relative;z-index:1}
+.feature:before{display:none}
+@media(max-width:700px){.brandmark{font-size:24px}.brandmark span{font-size:10px;right:2px;top:2px}.brandwords b{font-size:14px;letter-spacing:.035em}.brandwords small{font-size:11px}.hero-art>img{object-position:center 47%}.hero-art .art-word{font-size:65px}}
