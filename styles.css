@@ -86,3 +86,16 @@
  .topics .photo-card h3{font-size:17px}
  .topics .photo-card p{font-size:11px}
 }
+
+/* Compact landscape tiles: copy belongs in each photograph's upper-left corner. */
+.cards .photo-card,.topics a.photo-card{min-height:0;height:170px;padding:18px;justify-content:flex-start;align-items:flex-start;border-radius:5px}
+.photo-card:before{background:linear-gradient(180deg,rgba(7,26,38,.73) 0%,rgba(7,26,38,.4) 44%,rgba(7,26,38,.02) 100%)}
+.photo-card h3,.topics .photo-card h3{font-size:19px;margin-bottom:5px}
+.photo-card p,.topics .photo-card p{font-size:12px;line-height:1.4}
+.photo-card>div{padding-right:0;max-width:95%}
+.photo-arrow{display:none}
+@media(max-width:700px){
+ .cards .photo-card,.topics a.photo-card{height:127px;padding:12px;border-radius:4px}
+ .photo-card h3,.topics .photo-card h3{font-size:15px;line-height:1.25;margin-bottom:5px}
+ .photo-card p,.topics .photo-card p{font-size:10px;line-height:1.3}
+}
