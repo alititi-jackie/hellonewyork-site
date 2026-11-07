@@ -99,3 +99,14 @@
  .photo-card h3,.topics .photo-card h3{font-size:15px;line-height:1.25;margin-bottom:5px}
  .photo-card p,.topics .photo-card p{font-size:10px;line-height:1.3}
 }
+
+/* Crop away excess sky above the hero title; keep the words inside the photograph. */
+.hero-full{min-height:500px}
+.hero-full .hero-photo{object-position:center 68%}
+.hero-full .hero-overlay{align-self:flex-start}
+.hero-full .hero-copy{padding:20px 0 40px}
+@media(max-width:700px){
+ .hero-full{min-height:500px}
+ .hero-full .hero-photo{object-position:60% 67%}
+ .hero-full .hero-copy{padding:18px 0 38px}
+}
