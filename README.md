@@ -9,7 +9,7 @@
 - `script.js`：轻量脚本
 - `assets/*.webp`：经压缩的本地纽约摄影图片，不再依赖运行时第三方图片请求
 - `og-image.jpg`：固定社交分享封面
-- `content/*.json`：六个分类的文章与旧网址对应表
+- `content/*.json`：六个分类的文章
 - `scripts/build.py`：生成文章、分类、分页、搜索索引与 Sitemap
 - `article.css` / `topics.js`：文章和入口样式、渐进增强搜索
 - `.github/workflows/static.yml`：PR 构建检查与主分支 GitHub Pages 自动发布
@@ -32,17 +32,6 @@ python3 -m http.server 8000 --directory dist
 ```
 
 在本地浏览 `http://localhost:8000/topics/`。新增文章时在相应分类文件内加一条记录，填写唯一的 slug、摘要、关键词、图片、段落、常见问题、来源与日期。保留旧文章首次公开日期；新文章延后上线时，在发布前更新其首次公开日期。图片请用自有或有清晰授权的真实照片，并记录来源。运行构建后会自动生成目录、搜索索引、分页和 Sitemap。
-
-## 旧网址切换
-
-`content/redirects.json` 是映射清单。GitHub Pages 的静态源站会生成带 noindex 的备用跳转页，正式网址的 HTTP 301 由 Cloudflare 路由承担。
-
-1. 核对生产域名请求已由 Cloudflare 代理，证书和 GitHub Pages 源站正常。只持有 Cloudflare DNS 不会执行重定向规则。
-2. 运行 `python3 scripts/redirects.py > /tmp/hellonewyork-redirects.csv`，在 Cloudflare Bulk Redirects 导入精确地址列表。保留为待启用规则，避免新文章尚未上线时产生 404。
-3. 同一发布窗口内确认 GitHub Pages 新产物已就绪，再启用规则。使用 `python3 scripts/redirects.py --verify` 检查直接 301 与目标 200，确认旧址不在 Sitemap，且主页与新入口仍能访问。
-4. 用站点的 Search Console 检查旧 URL 的历史收录及新 URL 状态。公开搜索抽查无法替代 URL Inspection。
-
-参考 [Cloudflare Bulk Redirects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/)。
 
 ## 发布前检查
 
