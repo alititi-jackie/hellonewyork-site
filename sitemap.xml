@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url><loc>https://hellonewyork.org/</loc></url>
-<url><loc>https://hellonewyork.org/guides/first-week-checklist/</loc></url>
-<url><loc>https://hellonewyork.org/guides/idnyc/</loc></url>
-<url><loc>https://hellonewyork.org/guides/driver-license/</loc></url>
 <url><loc>https://hellonewyork.org/topics/</loc></url>
 <url><loc>https://hellonewyork.org/topics/ny-dmv-practice/</loc></url>
 <url><loc>https://hellonewyork.org/topics/ny-newcomer-guide/</loc></url>
@@ -11,4 +8,5 @@
 <url><loc>https://hellonewyork.org/topics/ny-attractions/</loc></url>
 <url><loc>https://hellonewyork.org/topics/ny-area-codes/</loc></url>
 <url><loc>https://hellonewyork.org/topics/ny-parking-qr/</loc></url>
+<url><loc>https://hellonewyork.org/topics/idnyc-apply-guide/</loc></url>
 </urlset>
