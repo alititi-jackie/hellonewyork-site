@@ -217,10 +217,6 @@ def build():
                for category in CATEGORIES]
     articles = [article for row in zip_longest(*grouped) for article in row if article is not None]
     validate(articles)
-    redirects = json.loads((ROOT / "content/redirects.json").read_text(encoding="utf-8"))
-    canonical_targets = {article_path(article) for article in articles} | {category_path(category) for category in groups}
-    if any(source in canonical_targets or target not in canonical_targets for source, target in redirects.items()):
-        raise ValueError("Invalid redirect mapping")
     if OUT.exists():
         shutil.rmtree(OUT)
     OUT.mkdir()
@@ -244,12 +240,6 @@ def build():
         "articles": [{**{key: a[key] for key in ("title", "summary", "category", "image", "keywords")},
                       "path": article_path(a), "alt": IMAGES[a["image"]]} for a in articles],
     }, ensure_ascii=False))
-    # Fallback for direct requests to the Pages origin. Public HTTP 301s require an edge rule.
-    for source, target in redirects.items():
-        write(source, f'<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="robots" content="noindex">'
-                      f'<meta http-equiv="refresh" content="0;url={e(target)}"><link rel="canonical" href="{SITE}{e(target)}">'
-                      f'<title>指南已迁移｜HelloNewYork.org</title></head><body><main><h1>这篇指南已迁移</h1>'
-                      f'{link("打开新版指南", target)}</main></body></html>')
     sitemap = "\n".join(f"<url><loc>{xml(SITE + path)}</loc>{f'<lastmod>{updated}</lastmod>' if updated else ''}</url>"
                         for path, updated in urls.items())
     write("/sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n'
