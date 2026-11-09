@@ -13,8 +13,8 @@
       "中央公园"
     ],
     "resource": [
-      "纽约景点地图与导航",
-      "https://tools.openaa.com/usa/nyc-attractions/"
+      "纽约官方旅游指南",
+      "https://www.nyctourism.com/"
     ],
     "published": "2026-11-08",
     "updated": "2026-11-08",
@@ -59,14 +59,6 @@
       [
         "MTA 服务和行程",
         "https://www.mta.info/"
-      ],
-      [
-        "OpenAA 纽约景点导航",
-        "https://tools.openaa.com/usa/nyc-attractions/"
-      ],
-      [
-        "OpenAA 纽约品牌门店导航",
-        "https://tools.openaa.com/usa/nyc-brands/"
       ]
     ],
     "related": [
@@ -132,10 +124,6 @@
       [
         "NYC Ferry 航线",
         "https://www.ferry.nyc/routes-and-schedules/"
-      ],
-      [
-        "OpenAA 纽约景点导航",
-        "https://tools.openaa.com/usa/nyc-attractions/"
       ]
     ],
     "related": [
@@ -206,10 +194,6 @@
       [
         "MTA 行程和服务变化",
         "https://www.mta.info/"
-      ],
-      [
-        "OpenAA 纽约品牌门店导航",
-        "https://tools.openaa.com/usa/nyc-brands/"
       ]
     ],
     "related": [
@@ -232,8 +216,8 @@
       "纽约消费税"
     ],
     "resource": [
-      "纽约品牌旗舰店及门店导航",
-      "https://tools.openaa.com/usa/nyc-brands/"
+      "纽约官方旅游指南",
+      "https://www.nyctourism.com/"
     ],
     "published": "2026-11-08",
     "updated": "2026-11-08",
@@ -274,14 +258,6 @@
       [
         "纽约州服装鞋类销售税说明",
         "https://www.tax.ny.gov/pubs_and_bulls/tg_bulletins/st/clothing_and_footwear.htm"
-      ],
-      [
-        "OpenAA 品牌门店导航",
-        "https://tools.openaa.com/usa/nyc-brands/"
-      ],
-      [
-        "OpenAA 景点导航",
-        "https://tools.openaa.com/usa/nyc-attractions/"
       ]
     ],
     "related": [

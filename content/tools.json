@@ -14,8 +14,8 @@
       "PDF"
     ],
     "resource": [
-      "OpenAA 停车挪车二维码工具",
-      "https://tools.openaa.com/tools/parking-qr/"
+      "纽约市交通局停车规则",
+      "https://www.nyc.gov/html/dot/html/motorist/parking-regulations.shtml"
     ],
     "published": "2026-11-08",
     "updated": "2026-11-08",
@@ -49,10 +49,6 @@
       ]
     ],
     "sources": [
-      [
-        "OpenAA 挪车码工具",
-        "https://tools.openaa.com/tools/parking-qr/"
-      ],
       [
         "纽约市交通局停车规则",
         "https://www.nyc.gov/html/dot/html/motorist/parking-regulations.shtml"
@@ -313,10 +309,6 @@
       [
         "NYC311 语言服务",
         "https://portal.311.nyc.gov/article/?kanumber=KA-03541"
-      ],
-      [
-        "OpenAA 生活工具",
-        "https://tools.openaa.com/"
       ]
     ],
     "related": [

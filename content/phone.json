@@ -63,17 +63,19 @@
       [
         "NANPA 区号规划",
         "https://www.nanpa.com/"
-      ],
-      [
-        "NumberMobi 商业号码展示",
-        "https://numbermobi.com/"
       ]
     ],
     "related": [
       "us-memorable-phone-number",
       "ny-mobile-plan-coverage",
       "buy-us-memorable-number"
-    ]
+    ],
+    "recommendation": {
+      "section": "选号码时区号能说明什么",
+      "before": "如果在区号和尾号之间犹豫，可以用",
+      "resource": "ny-numbers",
+      "after": "比较个人长期使用和商用号码分别该优先看什么。"
+    }
   },
   {
     "slug": "us-mobile-number-porting",
@@ -137,7 +139,13 @@
       "ny-mobile-plan-coverage",
       "buy-us-memorable-number",
       "ny-moving-address-checklist"
-    ]
+    ],
+    "recommendation": {
+      "section": "拿到资料，再由新运营商发起",
+      "before": "如果你转入的是另外购买的号码，付款前可以参考",
+      "resource": "port",
+      "after": "核对卖家要交付哪些资料，以及目标运营商能否接收。"
+    }
   },
   {
     "slug": "us-memorable-phone-number",
@@ -152,10 +160,7 @@
       "8888",
       "规律尾号"
     ],
-    "resource": [
-      "NumberMobi 美国好记号码展示",
-      "https://numbermobi.com/"
-    ],
+    "resource": null,
     "published": "2026-11-08",
     "updated": "2026-11-08",
     "sections": [
@@ -190,10 +195,6 @@
     ],
     "sources": [
       [
-        "NumberMobi 号码展示和可售情况说明",
-        "https://numbermobi.com/"
-      ],
-      [
         "FCC 携号转网消费者指南",
         "https://www.fcc.gov/consumers/guides/porting-keeping-your-phone-number-when-you-change-providers"
       ]
@@ -202,7 +203,13 @@
       "ny-area-codes",
       "buy-us-memorable-number",
       "us-mobile-number-porting"
-    ]
+    ],
+    "recommendation": {
+      "section": "用复述测试比较尾号",
+      "before": "比较重复尾号时，可以看",
+      "resource": "memorable",
+      "after": "再把不同组合念给别人听，看看哪组更容易一次复述准确。"
+    }
   },
   {
     "slug": "buy-us-memorable-number",
@@ -219,8 +226,8 @@
       "账户"
     ],
     "resource": [
-      "NumberMobi 购买须知",
-      "https://numbermobi.com/purchase-guide/"
+      "FCC 携号转网说明",
+      "https://www.fcc.gov/consumers/guides/porting-keeping-your-phone-number-when-you-change-providers"
     ],
     "published": "2026-11-08",
     "updated": "2026-11-08",
@@ -255,14 +262,6 @@
     ],
     "sources": [
       [
-        "NumberMobi 购买须知与交付说明",
-        "https://numbermobi.com/purchase-guide/"
-      ],
-      [
-        "NumberMobi 展示与联系方式",
-        "https://numbermobi.com/"
-      ],
-      [
         "FCC 携号转网说明",
         "https://www.fcc.gov/consumers/guides/porting-keeping-your-phone-number-when-you-change-providers"
       ]
@@ -271,7 +270,13 @@
       "us-mobile-number-porting",
       "us-memorable-phone-number",
       "ny-mobile-plan-coverage"
-    ]
+    ],
+    "recommendation": {
+      "section": "先确认号码、价格与接收方",
+      "before": "如果准备在 NumberMobi 购买，先阅读",
+      "resource": "buy-guide",
+      "after": "，逐项核对付款方式、转出期限、逾期托管费和退换条款。"
+    }
   },
   {
     "slug": "ny-mobile-plan-coverage",

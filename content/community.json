@@ -13,8 +13,8 @@
       "租约"
     ],
     "resource": [
-      "OpenAA 纽约房屋信息",
-      "https://openaa.com/housing"
+      "纽约州总检察长住宅租客权利指南",
+      "https://ag.ny.gov/publications/residential-tenants-rights-guide"
     ],
     "published": "2026-11-08",
     "updated": "2026-11-08",
@@ -22,7 +22,7 @@
       [
         "先用通勤和总费用缩小范围",
         "拿雇主地址或学校地址查早晚实际通勤，分别看步行、换乘及夜间班次。住布鲁克林八大道附近、皇后区法拉盛或曼哈顿华埠，便利之处各有不同；同一区的两条街也可能因地铁入口和夜班车差很多。用预算把月租、水电网、交通和洗衣费用放在一起比。",
-        "搜索时可从 OpenAA 房屋频道收集候选，再用地图核对地址，预约自己能到场的看房时间。中文沟通方便时，也把费用、谁签合同和入住日期写下来确认。"
+        "搜索时可从本地房源平台收集候选，再用地图核对地址，预约自己能到场的看房时间。中文沟通方便时，也把费用、谁签合同和入住日期写下来确认。"
       ],
       [
         "看房和付钱前做三次核对",
@@ -57,10 +57,6 @@
       [
         "纽约市 FARE Act 官方公告",
         "https://www.nyc.gov/site/dca/news/018-25/dcwp-the-fare-act-now-effect"
-      ],
-      [
-        "OpenAA 房屋信息",
-        "https://openaa.com/housing"
       ]
     ],
     "related": [
@@ -149,15 +145,15 @@
       "Pay Transparency"
     ],
     "resource": [
-      "OpenAA 招聘信息",
-      "https://openaa.com/jobs"
+      "纽约州劳工厅最低工资",
+      "https://dol.ny.gov/minimum-wage"
     ],
     "published": "2026-11-08",
     "updated": "2026-11-08",
     "sections": [
       [
         "看岗位先把工作条件问清楚",
-        "浏览 OpenAA 招聘时，核对公司名称、实际工作地点、职责和排班。八大道餐馆、法拉盛零售与曼哈顿门店，即使写同样的时薪，夜班通勤、休息安排和小费制度也可能不同。问清固定小时数、是否轮班、工资如何发放以及试工内容，保留文字确认。"
+        "浏览招聘信息时，核对公司名称、实际工作地点、职责和排班。八大道餐馆、法拉盛零售与曼哈顿门店，即使写同样的时薪，夜班通勤、休息安排和小费制度也可能不同。问清固定小时数、是否轮班、工资如何发放以及试工内容，保留文字确认。"
       ],
       [
         "时薪和小费怎样核实",
@@ -191,10 +187,6 @@
       [
         "纽约州薪资透明规则",
         "https://dol.ny.gov/pay-transparency"
-      ],
-      [
-        "OpenAA 招聘频道",
-        "https://openaa.com/jobs"
       ]
     ],
     "related": [
@@ -217,8 +209,8 @@
       "布鲁克林"
     ],
     "resource": [
-      "OpenAA 二手市场",
-      "https://openaa.com/marketplace"
+      "FTC 二手线上交易与假付款提示",
+      "https://consumer.ftc.gov/consumer-alerts/2022/07/selling-stuff-online-heres-how-avoid-scam"
     ],
     "published": "2026-11-08",
     "updated": "2026-11-08",
@@ -255,10 +247,6 @@
       [
         "FTC 二手线上交易与假付款提示",
         "https://consumer.ftc.gov/consumer-alerts/2022/07/selling-stuff-online-heres-how-avoid-scam"
-      ],
-      [
-        "OpenAA 二手频道",
-        "https://openaa.com/marketplace"
       ]
     ],
     "related": [
@@ -281,8 +269,8 @@
       "报价"
     ],
     "resource": [
-      "OpenAA 本地服务",
-      "https://openaa.com/services"
+      "NYC311 家庭装修承包商执照查询",
+      "https://portal.311.nyc.gov/article/?kanumber=KA-02783"
     ],
     "published": "2026-11-08",
     "updated": "2026-11-08",
@@ -323,10 +311,6 @@
       [
         "纽约州交通厅搬家承运商信息",
         "https://www.dot.ny.gov/divisions/operating/osss/truck/moving"
-      ],
-      [
-        "OpenAA 本地服务频道",
-        "https://openaa.com/services"
       ]
     ],
     "related": [

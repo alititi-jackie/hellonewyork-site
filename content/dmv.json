@@ -60,10 +60,6 @@
       [
         "学习驾照持有人规定",
         "https://dmv.ny.gov/forms/mv500h.pdf"
-      ],
-      [
-        "OpenAA 中文驾考练习",
-        "https://dmv.openaa.com/"
       ]
     ],
     "related": [
@@ -126,10 +122,6 @@
       [
         "DMV 原版材料与积分 ID-44",
         "https://dmv.ny.gov/forms/id44.pdf"
-      ],
-      [
-        "OpenAA 中文驾考和材料参考",
-        "https://dmv.openaa.com/"
       ]
     ],
     "related": [
@@ -361,8 +353,8 @@
       "Driver Manual"
     ],
     "resource": [
-      "OpenAA 纽约中文题库",
-      "https://dmv.openaa.com/"
+      "纽约 DMV 驾驶员手册",
+      "https://dmv.ny.gov/book/export/html/1556"
     ],
     "published": "2026-11-08",
     "updated": "2026-11-08",
@@ -384,7 +376,7 @@
     "faq": [
       [
         "中文题库是 DMV 官方原题吗？",
-        "OpenAA 提供学习练习。正式考试由 DMV 出题及管理。"
+        "中文练习题可帮助熟悉题型。正式考试由 DMV 出题及管理。"
       ],
       [
         "只背答案够用吗？",
@@ -403,10 +395,6 @@
       [
         "学习驾照正式申请",
         "https://www.ny.gov/services/get-your-learner-permit"
-      ],
-      [
-        "OpenAA 驾考练习",
-        "https://dmv.openaa.com/"
       ]
     ],
     "related": [
