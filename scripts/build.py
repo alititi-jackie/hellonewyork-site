@@ -320,6 +320,15 @@ def build():
         "articles": [{**{key: a[key] for key in ("title", "summary", "category", "image", "keywords")},
                       "path": article_path(a), "alt": IMAGES[a["image"]]} for a in articles],
     }, ensure_ascii=False))
+    redirects = json.loads((ROOT / "content/redirects.json").read_text(encoding="utf-8"))
+    if any(source in urls or target not in urls for source, target in redirects.items()):
+        raise ValueError("Invalid redirect mapping")
+    # GitHub Pages serves these static redirect documents.
+    for source, target in redirects.items():
+        write(source, f'<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="robots" content="noindex">'
+                      f'<meta http-equiv="refresh" content="0;url={e(target)}"><link rel="canonical" href="{SITE}{e(target)}">'
+                      f'<title>指南已迁移｜HelloNewYork.org</title></head><body><main><h1>这篇指南已迁移</h1>'
+                      f'{link("打开新版指南", target)}</main></body></html>')
     sitemap = "\n".join(f"<url><loc>{xml(SITE + path)}</loc>{f'<lastmod>{updated}</lastmod>' if updated else ''}</url>"
                         for path, updated in urls.items())
     write("/sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n'
