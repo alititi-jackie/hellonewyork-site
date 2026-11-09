@@ -160,7 +160,10 @@
       "8888",
       "规律尾号"
     ],
-    "resource": null,
+    "resource": [
+      "NumberMobi 好记号码类型中英对照",
+      "https://numbermobi.com/guides/phone-number-patterns-cn-en/"
+    ],
     "published": "2026-11-08",
     "updated": "2026-11-08",
     "sections": [
@@ -226,8 +229,8 @@
       "账户"
     ],
     "resource": [
-      "FCC 携号转网说明",
-      "https://www.fcc.gov/consumers/guides/porting-keeping-your-phone-number-when-you-change-providers"
+      "NumberMobi 购买前核对清单",
+      "https://numbermobi.com/guides/buying-checklist/"
     ],
     "published": "2026-11-08",
     "updated": "2026-11-08",
