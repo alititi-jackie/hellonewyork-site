@@ -75,6 +75,36 @@ def site_header(homepage=False):
 <a class="nav-cta" href="https://go.openaa.com/" target="_blank" rel="noopener">Go.OpenAA</a>
 </div><nav class="mobile-nav" aria-label="手机栏目导航">{nav}</nav></header>"""
 
+def home_guide_categories():
+    covers = {
+        "dmv": "dmv-bronx-office",
+        "paperwork": "brooklyn-central-library",
+        "community": "brooklyn-brownstones",
+        "visit": "flushing-main-street",
+        "phone": "mobile-phone-sim",
+        "tools": "nyc-muni-meter",
+    }
+    cards = []
+    credits = []
+    for category, title in CATEGORIES.items():
+        image = covers[category]
+        photo = PHOTO_CREDITS[image]
+        cards.append(
+            f'<a class="photo-card" href="{category_path(category)}" aria-label="{e(title)}">'
+            f'<img src="/assets/{image}.webp" alt="{e(photo["alt"])}" loading="lazy">'
+            f'<div><h3>{e(title)}</h3></div></a>'
+        )
+        original = link(photo["credit"], photo["source"])
+        license_link = link(photo["license"], photo["license_url"])
+        credits.append(f'<li>{e(title)} · {original} · {license_link}</li>')
+    return f"""<section class="section wrap home-guides" aria-labelledby="home-guides-heading">
+<div class="section-head"><h2 id="home-guides-heading">纽约实用指南</h2>
+{link("查看全部指南 →", HUB, **{"class": "home-guides-all"})}</div>
+<div class="cards">{''.join(cards)}</div>
+<details class="home-guides-credits"><summary>图片来源</summary><ul>{''.join(credits)}</ul>
+<p>图片已缩放并转换为 WebP。</p></details>
+</section>"""
+
 def shell(title, description, path, body, image="attractions", crumbs=(), article=None, script=""):
     full_title = f"{title}｜HelloNewYork.org"
     url = SITE + path
@@ -263,10 +293,14 @@ def build():
     OUT.mkdir()
     shutil.copytree(ROOT / "assets", OUT / "assets")
     homepage = (ROOT / "index.html").read_text(encoding="utf-8")
-    marker = "<!-- SITE_HEADER -->"
-    if homepage.count(marker) != 1:
-        raise ValueError("Homepage must have exactly one shared header marker")
-    write("/", homepage.replace(marker, site_header(homepage=True)))
+    for marker, content in (
+        ("<!-- SITE_HEADER -->", site_header(homepage=True)),
+        ("<!-- HOME_GUIDE_CATEGORIES -->", home_guide_categories()),
+    ):
+        if homepage.count(marker) != 1:
+            raise ValueError(f"Homepage must have exactly one marker: {marker}")
+        homepage = homepage.replace(marker, content)
+    write("/", homepage)
     for name in ("styles.css", "article.css", "topics.js", "script.js", "site.webmanifest",
                  "favicon.svg", "favicon.ico", "favicon-32.png", "icon-192.png", "icon-512.png", "og-image.jpg", "robots.txt"):
         shutil.copyfile(ROOT / name, OUT / name)
