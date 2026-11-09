@@ -109,18 +109,33 @@ def card(href, title, image, label, priority=False):
 def article_card(article):
     return card(article_path(article), article["title"], article["image"], CATEGORIES[article["category"]])
 
-def render_article(article, articles):
+def render_article(article, articles, resources):
     title = article["title"]
     path = article_path(article)
     category = article["category"]
     image = article["image"]
     crumbs = [("首页", "/"), ("纽约实用指南", HUB), (CATEGORIES[category], category_path(category)), (title, path)]
-    sections = "".join(f'<section><h2>{e(heading)}</h2>' +
-                       "".join(f"<p>{e(p)}</p>" for p in paragraphs) + "</section>"
-                       for heading, *paragraphs in article["sections"])
+    recommendation = article.get("recommendation")
+    recommendation_text = ""
+    if recommendation:
+        recommendation_text = (
+            f'<p>{e(recommendation["before"])}'
+            f'{link(*resources[recommendation["resource"]])}'
+            f'{e(recommendation["after"])}</p>'
+        )
+    sections = "".join(
+        f'<section><h2>{e(heading)}</h2>'
+        + "".join(f"<p>{e(p)}</p>" for p in paragraphs)
+        + (recommendation_text if recommendation and heading == recommendation["section"] else "")
+        + "</section>"
+        for heading, *paragraphs in article["sections"]
+    )
     faq = "".join(f'<details><summary>{e(q)}</summary><p>{e(a)}</p></details>' for q, a in article["faq"])
     sources = "".join(f"<li>{link(label, url)}</li>" for label, url in article["sources"])
-    resource = card(article["resource"][1], article["resource"][0], image, "相关资源 ↗", priority=True)
+    resource = ""
+    if article.get("resource"):
+        label, url = article["resource"]
+        resource = card(url, label, image, "相关资源 ↗", priority=True)
     credit = ""
     if image == "flushing-main-street":
         original = link("Tdorante10 / Wikimedia Commons", "https://commons.wikimedia.org/wiki/File:Main_St_Roosevelt_Av_td_(2018-05-22)_01.jpg")
@@ -187,7 +202,7 @@ def write(path, data):
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(data, encoding="utf-8")
 
-def validate(articles):
+def validate(articles, resources):
     for key in ("slug", "title", "summary"):
         values = [a[key] for a in articles]
         if len(values) != len(set(values)):
@@ -205,7 +220,18 @@ def validate(articles):
             raise ValueError(f"Incomplete article: {slug}")
         if not set(a.get("related", [])) <= slugs - {slug}:
             raise ValueError(f"Invalid related links: {slug}")
-        for _, url in [a["resource"], *a["sources"]]:
+        references = [*a["sources"]]
+        if a.get("resource"):
+            references.append(a["resource"])
+        if recommendation := a.get("recommendation"):
+            section_count = sum(heading == recommendation["section"] for heading, *_ in a["sections"])
+            if section_count != 1 or recommendation["resource"] not in resources:
+                raise ValueError(f"Invalid recommendation: {slug}")
+            label, url = resources[recommendation["resource"]]
+            if urlsplit(url).path in ("", "/") or any(url == other for _, other in references):
+                raise ValueError(f"Recommendation must use a unique detail URL: {slug}")
+            references.append((label, url))
+        for _, url in references:
             parsed = urlsplit(url)
             if parsed.scheme != "https" or not parsed.netloc:
                 raise ValueError(f"Invalid reference URL: {url}")
@@ -216,7 +242,8 @@ def build():
     grouped = [[{**article, "category": category} for article in groups.get(category, [])]
                for category in CATEGORIES]
     articles = [article for row in zip_longest(*grouped) for article in row if article is not None]
-    validate(articles)
+    resources = json.loads((ROOT / "content/recommendation-resources.json").read_text(encoding="utf-8"))
+    validate(articles, resources)
     if OUT.exists():
         shutil.rmtree(OUT)
     OUT.mkdir()
@@ -233,7 +260,7 @@ def build():
             urls[path] = None
     for a in articles:
         path = article_path(a)
-        write(path, render_article(a, articles))
+        write(path, render_article(a, articles, resources))
         urls[path] = a["updated"]
     write("/topics/index.json", json.dumps({
         "pageSize": PAGE_SIZE, "categories": CATEGORIES,
