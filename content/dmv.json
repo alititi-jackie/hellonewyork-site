@@ -1,7 +1,7 @@
 [
   {
     "slug": "ny-learner-permit",
-    "image": "dmv",
+    "image": "dmv-bronx-office",
     "title": "纽约学习驾照 Learner Permit 怎么申请",
     "summary": "从选证件、准备材料到笔试和领证，按顺序办好纽约州普通汽车学习驾照，避免把笔试通过当成可以单独开车。",
     "keywords": [
@@ -72,7 +72,7 @@
   },
   {
     "slug": "ny-dmv-six-points",
-    "image": "dmv",
+    "image": "passport-card-sample",
     "title": "纽约 DMV 6 Points 身份证明怎么凑齐",
     "summary": "用 ID-44 核对姓名积分、出生日期、地址和身份类别，再按 Standard、REAL ID 或 Enhanced 打包材料。",
     "keywords": [
@@ -199,7 +199,7 @@
   },
   {
     "slug": "ny-real-id",
-    "image": "dmv",
+    "image": "enhanced-license-samples",
     "title": "纽约 REAL ID、普通驾照与 Enhanced ID 有什么区别",
     "summary": "按开车、国内航班和陆海边境出行三个场景比较纽约驾照，分清星标、美国国旗和材料要求。",
     "keywords": [
@@ -272,7 +272,7 @@
   },
   {
     "slug": "ny-dmv-change-address",
-    "image": "dmv",
+    "image": "nyc-mailbox",
     "title": "纽约驾照搬家改地址，车辆登记和保险怎样一起更新",
     "summary": "把驾照、每辆车登记、保险和现有罚单分开核对，避免只改一个地址漏掉其他记录。",
     "keywords": [
@@ -342,7 +342,7 @@
   },
   {
     "slug": "ny-dmv-practice",
-    "image": "dmv",
+    "image": "manhattan-stop-sign",
     "title": "纽约 DMV 笔试怎么练，中文和英文怎样搭配",
     "summary": "用 DMV 手册打底，搭配纽约中文题库、错题和英文路标训练，建立能应付正式笔试的复习顺序。",
     "keywords": [

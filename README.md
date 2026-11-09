@@ -31,7 +31,7 @@ python3 scripts/check.py
 python3 -m http.server 8000 --directory dist
 ```
 
-在本地浏览 `http://localhost:8000/topics/`。新增文章时在相应分类文件内加一条记录，填写唯一的 slug、摘要、关键词、图片、段落、常见问题、来源与日期。保留旧文章首次公开日期；新文章延后上线时，在发布前更新其首次公开日期。图片请用自有或有清晰授权的真实照片，并记录来源。运行构建后会自动生成目录、搜索索引、分页和 Sitemap。
+在本地浏览 `http://localhost:8000/topics/`。新增文章时在相应分类文件内加一条记录，填写唯一的 slug、摘要、关键词、封面图片、段落、常见问题、来源与日期。保留旧文章首次公开日期；新文章延后上线时，在发布前更新其首次公开日期。图片请用自有或有清晰授权的真实照片，并记录来源。运行构建后会自动生成目录、搜索索引、分页和 Sitemap。
 
 ## 发布前检查
 
@@ -41,7 +41,7 @@ python3 -m http.server 8000 --directory dist
 
 ## 摄影图片来源
 
-以下原图来自 Unsplash，使用前已确认图片链接及其免费使用页面。保留来源记录便于后续核对授权、替换或署名：
+新增 Wikimedia Commons 封面的作者、原始文件和许可记录在 [photo-credits.json](content/photo-credits.json) 中，并显示在对应文章页。以下是早期采用的 Unsplash 素材来源。
 
 | 网站图片 | 原图页面 / 来源 |
 | --- | --- |
@@ -55,4 +55,3 @@ python3 -m http.server 8000 --directory dist
 | 网站导航 | https://images.unsplash.com/photo-1729803404404-5346a94096f8 |
 | 城市景点 | https://images.unsplash.com/photo-1599854171059-d91f0fee45cd |
 | 品牌购物 | https://unsplash.com/photos/people-walking-on-sidewalk-during-daytime-HkRUuJUUAMA |
-| 法拉盛 Main Street | [Tdorante10 / Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Main_St_Roosevelt_Av_td_(2018-05-22)_01.jpg)，[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)，缩放并转换为 WebP |
