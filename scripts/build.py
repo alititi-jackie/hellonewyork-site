@@ -18,9 +18,10 @@ CATEGORIES = {
     "dmv": "DMV", "paperwork": "生活办事", "community": "华人生活",
     "visit": "旅游购物", "phone": "手机号码", "tools": "实用工具",
 }
+PHOTO_CREDITS = json.loads((ROOT / "content/photo-credits.json").read_text(encoding="utf-8"))
 IMAGES = {
     "dmv": "纽约街头的黄色出租车",
-    "flushing-main-street": "皇后区法拉盛 Main Street 和 Roosevelt Avenue 路口的公交车",
+    "hero": "纽约曼哈顿天际线与布鲁克林大桥",
     "newcomer": "纽约地铁站日常生活场景",
     "housing": "纽约街区住宅与临街商铺",
     "jobs": "纽约华埠街景",
@@ -29,6 +30,7 @@ IMAGES = {
     "shopping": "纽约第五大道购物街道与行人",
     "navigation": "纽约地铁站出入口与线路标识",
     "tools": "从高处俯瞰纽约曼哈顿建筑",
+    **{name: photo["alt"] for name, photo in PHOTO_CREDITS.items()},
 }
 
 def e(value):
@@ -149,10 +151,10 @@ def render_article(article, articles, resources):
         label, url = article["resource"]
         resource = card(url, label, image, "相关资源 ↗", priority=True)
     credit = ""
-    if image == "flushing-main-street":
-        original = link("Tdorante10 / Wikimedia Commons", "https://commons.wikimedia.org/wiki/File:Main_St_Roosevelt_Av_td_(2018-05-22)_01.jpg")
-        license_link = link("CC BY-SA 4.0", "https://creativecommons.org/licenses/by-sa/4.0/")
-        credit = f'<p class="article-meta article-credit">摄影 {original} · {license_link} · 已缩放并转换为 WebP</p>'
+    if photo := PHOTO_CREDITS.get(image):
+        original = link(photo["credit"], photo["source"])
+        license_link = link(photo["license"], photo["license_url"])
+        credit = f'<p class="article-meta article-credit">封面图 {original} · {license_link} · 已缩放并转换为 WebP</p>'
     by_slug = {a["slug"]: a for a in articles}
     direct = [by_slug[slug] for slug in article.get("related", [])]
     related = []
@@ -215,7 +217,7 @@ def write(path, data):
     target.write_text(data, encoding="utf-8")
 
 def validate(articles, resources):
-    for key in ("slug", "title", "summary"):
+    for key in ("slug", "title", "summary", "image"):
         values = [a[key] for a in articles]
         if len(values) != len(set(values)):
             raise ValueError(f"Duplicate {key}")

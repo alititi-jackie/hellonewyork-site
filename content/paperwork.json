@@ -1,7 +1,7 @@
 [
   {
     "slug": "idnyc-apply-guide",
-    "image": "newcomer",
+    "image": "brooklyn-central-library",
     "title": "纽约市民卡 IDNYC 申请攻略",
     "summary": "查清 IDNYC 年龄、住址及身份证明，在线预约或找指定免预约点，了解现场拍照和邮寄流程。",
     "keywords": [
@@ -83,7 +83,7 @@
   },
   {
     "slug": "ny-address-proof",
-    "image": "newcomer",
+    "image": "brooklyn-post-office",
     "title": "纽约地址证明怎么准备，银行账单和租约能用吗",
     "summary": "按 DMV、IDNYC 和银行三种场景选住址材料，核对账单日期、姓名和门牌公寓号。",
     "keywords": [
@@ -152,7 +152,7 @@
   },
   {
     "slug": "ny-bank-account",
-    "image": "newcomer",
+    "image": "flushing-bank",
     "title": "纽约新移民怎么开银行账户",
     "summary": "先确认分行收哪些证件，再比较支票账户的月费、最低余额、ATM 和汇款费用。",
     "keywords": [
@@ -290,7 +290,7 @@
   },
   {
     "slug": "ny-moving-address-checklist",
-    "image": "newcomer",
+    "image": "nyc-truck",
     "title": "纽约搬家后要改哪些地址",
     "summary": "按政府、邮件、金融、工作和日常服务更新资料，区分 USPS 邮件转寄和各机构自己的住址记录。",
     "keywords": [

@@ -1,7 +1,7 @@
 [
   {
     "slug": "ny-parking-qr",
-    "image": "services",
+    "image": "scan-qr-code",
     "title": "美国停车挪车二维码怎么做，怎样保护联系方式",
     "summary": "用停车联系码让对方找到你，发布前测试落地页，控制号码暴露并按纽约停车标志停放。",
     "keywords": [
@@ -62,7 +62,7 @@
   },
   {
     "slug": "ny-parking-signs",
-    "image": "housing",
+    "image": "nyc-parking-sign",
     "title": "纽约路边停车标志怎么读，街道清扫日怎样停车",
     "summary": "从箭头、适用日期、扫街时段和缴费标志判断停车位，避开消防栓与禁止双排停车的常见错误。",
     "keywords": [
@@ -126,7 +126,7 @@
   },
   {
     "slug": "ny-parking-ticket",
-    "image": "dmv",
+    "image": "nyc-muni-meter",
     "title": "纽约停车罚单怎样查询、缴费与申诉",
     "summary": "用罚单号或车牌查纽约市停车及摄像头罚单，分清缴费和听证流程，整理申诉证据。",
     "keywords": [
@@ -186,7 +186,7 @@
   },
   {
     "slug": "ny-ezpass-tolls",
-    "image": "attractions",
+    "image": "gowanus-ezpass",
     "title": "纽约 E-ZPass 和收费道路怎么用，怎样查过路账单",
     "summary": "按车牌和车辆资料维护 E-ZPass，分清感应器扣款、邮寄账单和不同道路的实际费率。",
     "keywords": [
@@ -254,7 +254,7 @@
   },
   {
     "slug": "nyc-311-911",
-    "image": "services",
+    "image": "nyc-city-hall",
     "title": "纽约什么时候打 311，什么时候打 911",
     "summary": "区分人身安全、火灾和急救等紧急事件与城市服务投诉，并掌握中文口译和案件编号的用法。",
     "keywords": [
