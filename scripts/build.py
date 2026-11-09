@@ -56,6 +56,23 @@ def breadcrumb(items):
     visible.append(f'<span aria-current="page">{e(items[-1][0])}</span>')
     return f'<nav class="article-crumb" aria-label="面包屑">{" <span aria-hidden=\"true\">›</span> ".join(visible)}</nav>'
 
+def site_header(homepage=False):
+    home_href = "#top" if homepage else "/"
+    anchor_prefix = "" if homepage else "/"
+    sections = [
+        ("start", "初到纽约"),
+        ("life", "生活指南"),
+        ("explore", "城市探索"),
+        ("resources", "实用资源"),
+    ]
+    nav = "".join(link(label, f"{anchor_prefix}#{section}") for section, label in sections)
+    nav += link("实用指南", HUB)
+    return f"""<header class="topbar"><div class="wrap nav">
+<a class="brand" href="{home_href}" aria-label="HelloNewYork.org 首页"><span class="brandwords"><b>HelloNewYork<span class="org-suffix">.org</span></b><small>你好，纽约 · 免费公益生活指南</small></span></a>
+<nav aria-label="主导航">{nav}</nav>
+<a class="nav-cta" href="https://go.openaa.com/" target="_blank" rel="noopener">Go.OpenAA</a>
+</div><nav class="mobile-nav" aria-label="手机栏目导航">{nav}</nav></header>"""
+
 def shell(title, description, path, body, image="attractions", crumbs=(), article=None, script=""):
     full_title = f"{title}｜HelloNewYork.org"
     url = SITE + path
@@ -72,8 +89,6 @@ def shell(title, description, path, body, image="attractions", crumbs=(), articl
                        "datePublished": article["published"], "dateModified": article["updated"],
                        "author": {"@type": "Organization", "name": "HelloNewYork.org", "url": SITE},
                        "publisher": {"@type": "Organization", "name": "HelloNewYork.org", "url": SITE}})
-    nav = "".join(link(label, f"/#{section}") for section, label in
-                  [("start", "初到纽约"), ("life", "生活指南"), ("explore", "城市探索"), ("resources", "实用资源")])
     return f"""<!doctype html>
 <html lang="zh-CN"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -88,10 +103,7 @@ def shell(title, description, path, body, image="attractions", crumbs=(), articl
 {''.join(json_script(item) for item in schema)}
 </head><body class="article-main">
 <a class="skip" href="#main">跳到正文</a>
-<header class="topbar"><div class="wrap nav">
-<a class="brand" href="/" aria-label="HelloNewYork.org 首页"><span class="brandwords"><b>HelloNewYork<span class="org-suffix">.org</span></b><small>你好，纽约 · 免费公益生活指南</small></span></a>
-<nav aria-label="主导航">{nav}</nav><a class="nav-cta" href="https://go.openaa.com/" target="_blank" rel="noopener">Go.OpenAA</a>
-</div><nav class="mobile-nav" aria-label="手机栏目导航">{nav}</nav></header>
+{site_header()}
 {body}
 <footer><div class="wrap foot"><div><a class="foot-logo" href="/">HelloNewYork<span class="org-suffix">.org</span></a><p>你好，纽约 · 免费公益生活指南 · 无需注册。</p></div>
 <div class="footer-right"><a href="/topics/">纽约实用指南</a><a href="https://openaa.com/" target="_blank" rel="noopener">OpenAA.com ↗</a><span>© <span id="year">2026</span> HelloNewYork.org</span></div></div>
@@ -248,7 +260,12 @@ def build():
         shutil.rmtree(OUT)
     OUT.mkdir()
     shutil.copytree(ROOT / "assets", OUT / "assets")
-    for name in ("index.html", "styles.css", "article.css", "topics.js", "script.js", "site.webmanifest",
+    homepage = (ROOT / "index.html").read_text(encoding="utf-8")
+    marker = "<!-- SITE_HEADER -->"
+    if homepage.count(marker) != 1:
+        raise ValueError("Homepage must have exactly one shared header marker")
+    write("/", homepage.replace(marker, site_header(homepage=True)))
+    for name in ("styles.css", "article.css", "topics.js", "script.js", "site.webmanifest",
                  "favicon.svg", "favicon.ico", "favicon-32.png", "icon-192.png", "icon-512.png", "og-image.jpg", "robots.txt"):
         shutil.copyfile(ROOT / name, OUT / name)
     urls = {"/": None}
