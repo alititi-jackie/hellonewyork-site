@@ -73,7 +73,7 @@ def site_header(homepage=False):
 <a class="brand" href="{home_href}" aria-label="HelloNewYork.org 首页"><span class="brandwords"><b>HelloNewYork<span class="org-suffix">.org</span></b><small>你好，纽约 · 免费公益生活指南</small></span></a>
 <nav aria-label="主导航">{nav}</nav>
 <a class="nav-cta" href="https://go.openaa.com/" target="_blank" rel="noopener">Go.OpenAA</a>
-</div><nav class="mobile-nav" aria-label="手机栏目导航">{nav}</nav></header>"""
+</div></header><nav class="mobile-nav" aria-label="手机栏目导航">{nav}</nav>"""
 
 def home_guide_categories():
     covers = {

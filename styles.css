@@ -261,3 +261,10 @@ html{scroll-padding-top:122px}
 .hero-dot.is-active{width:26px;background:#fff}
 @media(max-width:700px){.hero-dots{bottom:18px;right:18px}}
 @media (prefers-reduced-motion: reduce){.hero-full .hero-photo{transition:none}}
+
+/* Mobile: brand row scrolls away with the page; the section nav sticks on its own */
+@media(max-width:700px){
+.topbar{position:static;border-bottom:0}
+.mobile-nav{position:sticky;top:0;z-index:10;background:rgba(255,254,250,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid #e7e8e2;padding:8px 12px}
+html{scroll-padding-top:56px}
+}
