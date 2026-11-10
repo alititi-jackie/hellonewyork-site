@@ -52,10 +52,9 @@ document.getElementById('year').textContent = new Date().getFullYear();
     var matched = links.filter(pick);
     if (matched.length) tracked.push({ el: el, links: matched });
   }
-  ['start', 'life', 'explore', 'resources'].forEach(function (id) {
+  ['guides', 'start', 'life', 'explore', 'resources'].forEach(function (id) {
     bind(document.getElementById(id), function (a) { return a.hash === '#' + id; });
   });
-  bind(document.querySelector('.home-guides'), function (a) { return a.getAttribute('href') === '/topics/'; });
   if (!tracked.length) return;
   function setCurrent(entry) {
     tracked.forEach(function (t) {
@@ -79,4 +78,43 @@ document.getElementById('year').textContent = new Date().getFullYear();
     setCurrent(current);
   }, { rootMargin: '-40% 0px -55% 0px' });
   tracked.forEach(function (t) { observer.observe(t.el); });
+})();
+
+/* Share button: native share sheet where available, otherwise copy the link. */
+(function () {
+  var btn = document.querySelector('.share-btn');
+  if (!btn) return;
+  function tip(msg) {
+    var t = document.createElement('div');
+    t.className = 'share-tip';
+    t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(function () { t.classList.add('show'); }, 10);
+    setTimeout(function () {
+      t.classList.remove('show');
+      setTimeout(function () { t.remove(); }, 300);
+    }, 1800);
+  }
+  function copyUrl(url) {
+    function done() { tip('链接已复制'); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(done, function () { tip('复制失败，请长按地址栏复制'); });
+      return;
+    }
+    var ta = document.createElement('textarea');
+    ta.value = url;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); done(); } catch (e) { tip('复制失败，请长按地址栏复制'); }
+    ta.remove();
+  }
+  btn.addEventListener('click', function () {
+    if (navigator.share) {
+      navigator.share({ title: document.title, url: location.href }).catch(function () {});
+    } else {
+      copyUrl(location.href);
+    }
+  });
 })();

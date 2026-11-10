@@ -67,12 +67,13 @@ def site_header(homepage=False):
         ("explore", "城市探索"),
         ("resources", "实用资源"),
     ]
-    nav = "".join(link(label, f"{anchor_prefix}#{section}") for section, label in sections)
-    nav += link("实用指南", HUB) if homepage else link("实用指南", HUB, aria_current="page")
+    guides_link = (link("实用指南", f"{anchor_prefix}#guides") if homepage
+                   else link("实用指南", f"{anchor_prefix}#guides", aria_current="page"))
+    nav = guides_link + "".join(link(label, f"{anchor_prefix}#{section}") for section, label in sections)
     return f"""<header class="topbar"><div class="wrap nav">
 <a class="brand" href="{home_href}" aria-label="HelloNewYork.org 首页"><span class="brandwords"><b>HelloNewYork<span class="org-suffix">.org</span></b><small>你好，纽约 · 免费公益生活指南</small></span></a>
 <nav aria-label="主导航">{nav}</nav>
-<a class="nav-cta" href="https://go.openaa.com/" target="_blank" rel="noopener">Go.OpenAA</a>
+<span class="nav-actions"><a class="nav-cta" href="https://go.openaa.com/" target="_blank" rel="noopener">Go.OpenAA</a><button class="share-btn" type="button" aria-label="分享这个页面"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V5"/><path d="M8.5 8L12 4.5L15.5 8"/><path d="M5 13v6a1.5 1.5 0 0 0 1.5 1.5h11A1.5 1.5 0 0 0 19 19v-6"/></svg></button></span>
 </div></header><nav class="mobile-nav" aria-label="手机栏目导航">{nav}</nav>"""
 
 def home_guide_categories():
@@ -97,7 +98,7 @@ def home_guide_categories():
         original = link(photo["credit"], photo["source"])
         license_link = link(photo["license"], photo["license_url"])
         credits.append(f'<li>{e(title)} · {original} · {license_link}</li>')
-    return f"""<section class="section wrap home-guides" aria-labelledby="home-guides-heading">
+    return f"""<section id="guides" class="section wrap home-guides" aria-labelledby="home-guides-heading">
 <div class="section-head"><h2 id="home-guides-heading">纽约实用指南</h2>
 {link("查看全部指南 →", HUB, **{"class": "home-guides-all"})}</div>
 <div class="cards">{''.join(cards)}</div>
@@ -127,7 +128,7 @@ def shell(title, description, path, body, image="attractions", crumbs=(), articl
 <title>{e(full_title)}</title><meta name="description" content="{e(description)}">
 <link rel="canonical" href="{e(url)}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/icon-192.png">
-<link rel="stylesheet" href="/styles.css?v=20261113"><link rel="stylesheet" href="/article.css?v=20261114">
+<link rel="stylesheet" href="/styles.css?v=20261115"><link rel="stylesheet" href="/article.css?v=20261114">
 <meta property="og:type" content="{'article' if article else 'website'}"><meta property="og:locale" content="zh_CN">
 <meta property="og:title" content="{e(full_title)}"><meta property="og:description" content="{e(description)}">
 <meta property="og:url" content="{e(url)}"><meta property="og:image" content="{e(img)}">
@@ -140,7 +141,7 @@ def shell(title, description, path, body, image="attractions", crumbs=(), articl
 <footer><div class="wrap foot"><div><a class="foot-logo" href="/">HelloNewYork<span class="org-suffix">.org</span></a><p>你好，纽约 · 免费公益生活指南 · 无需注册。</p></div>
 <div class="footer-right"><a href="/topics/">纽约实用指南</a><a href="https://openaa.com/" target="_blank" rel="noopener">OpenAA.com ↗</a><span>© <span id="year">2026</span> HelloNewYork.org</span></div></div>
 <div class="wrap disclaimer">本站是独立的免费公益生活信息导航项目。办事要求、价格和开放时间以相关机构或服务方公布的信息为准。</div></footer>
-<script src="/script.js?v=20261113" defer></script>{script}
+<script src="/script.js?v=20261115" defer></script>{script}
 </body></html>
 """
 
