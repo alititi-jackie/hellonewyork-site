@@ -68,7 +68,7 @@ def site_header(homepage=False):
         ("resources", "实用资源"),
     ]
     nav = "".join(link(label, f"{anchor_prefix}#{section}") for section, label in sections)
-    nav += link("实用指南", HUB)
+    nav += link("实用指南", HUB) if homepage else link("实用指南", HUB, aria_current="page")
     return f"""<header class="topbar"><div class="wrap nav">
 <a class="brand" href="{home_href}" aria-label="HelloNewYork.org 首页"><span class="brandwords"><b>HelloNewYork<span class="org-suffix">.org</span></b><small>你好，纽约 · 免费公益生活指南</small></span></a>
 <nav aria-label="主导航">{nav}</nav>
@@ -127,7 +127,7 @@ def shell(title, description, path, body, image="attractions", crumbs=(), articl
 <title>{e(full_title)}</title><meta name="description" content="{e(description)}">
 <link rel="canonical" href="{e(url)}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/icon-192.png">
-<link rel="stylesheet" href="/styles.css?v=20261112"><link rel="stylesheet" href="/article.css?v=20261112">
+<link rel="stylesheet" href="/styles.css?v=20261113"><link rel="stylesheet" href="/article.css?v=20261113">
 <meta property="og:type" content="{'article' if article else 'website'}"><meta property="og:locale" content="zh_CN">
 <meta property="og:title" content="{e(full_title)}"><meta property="og:description" content="{e(description)}">
 <meta property="og:url" content="{e(url)}"><meta property="og:image" content="{e(img)}">
@@ -140,7 +140,7 @@ def shell(title, description, path, body, image="attractions", crumbs=(), articl
 <footer><div class="wrap foot"><div><a class="foot-logo" href="/">HelloNewYork<span class="org-suffix">.org</span></a><p>你好，纽约 · 免费公益生活指南 · 无需注册。</p></div>
 <div class="footer-right"><a href="/topics/">纽约实用指南</a><a href="https://openaa.com/" target="_blank" rel="noopener">OpenAA.com ↗</a><span>© <span id="year">2026</span> HelloNewYork.org</span></div></div>
 <div class="wrap disclaimer">本站是独立的免费公益生活信息导航项目。办事要求、价格和开放时间以相关机构或服务方公布的信息为准。</div></footer>
-<script src="/script.js" defer></script>{script}
+<script src="/script.js?v=20261113" defer></script>{script}
 </body></html>
 """
 

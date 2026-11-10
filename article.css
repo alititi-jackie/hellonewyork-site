@@ -27,3 +27,11 @@
   .article-photo-card > img { transition: none; }
 }
 .article-credit a { text-decoration: underline; }
+
+/* Guide category tabs stick under the header (desktop) / under the mobile nav */
+@media(min-width:701px){
+.hub-tabs{position:sticky;top:83px;z-index:9;background:rgba(255,254,250,.97);backdrop-filter:blur(16px)}
+}
+@media(max-width:700px){
+.hub-tabs{position:sticky;top:51px;z-index:9;background:rgba(255,254,250,.97);backdrop-filter:blur(16px)}
+}

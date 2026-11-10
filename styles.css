@@ -268,3 +268,7 @@ html{scroll-padding-top:122px}
 .mobile-nav{position:sticky;top:0;z-index:10;background:rgba(255,254,250,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid #e7e8e2;padding:8px 12px}
 html{scroll-padding-top:56px}
 }
+
+/* Header nav active state: scrollspy on the homepage, current page on guide pages */
+.nav nav a.nav-current, .nav nav a[aria-current="page"]{color:var(--orange);box-shadow:inset 0 -2px 0 var(--orange)}
+.mobile-nav a.nav-current, .mobile-nav a[aria-current="page"]{color:#a64e30;background:#f3f0e9}
