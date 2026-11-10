@@ -35,3 +35,7 @@
 @media(max-width:700px){
 .hub-tabs{position:sticky;top:51px;z-index:9;background:rgba(255,254,250,.97);backdrop-filter:blur(16px)}
 }
+
+/* Slimmer category tab bar */
+.hub-tabs{padding:3px 4px;margin:0 0 12px}
+.hub-tabs a{padding:5px 11px;font-size:14px}

@@ -127,7 +127,7 @@ def shell(title, description, path, body, image="attractions", crumbs=(), articl
 <title>{e(full_title)}</title><meta name="description" content="{e(description)}">
 <link rel="canonical" href="{e(url)}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/icon-192.png">
-<link rel="stylesheet" href="/styles.css?v=20261113"><link rel="stylesheet" href="/article.css?v=20261113">
+<link rel="stylesheet" href="/styles.css?v=20261113"><link rel="stylesheet" href="/article.css?v=20261114">
 <meta property="og:type" content="{'article' if article else 'website'}"><meta property="og:locale" content="zh_CN">
 <meta property="og:title" content="{e(full_title)}"><meta property="og:description" content="{e(description)}">
 <meta property="og:url" content="{e(url)}"><meta property="og:image" content="{e(img)}">
