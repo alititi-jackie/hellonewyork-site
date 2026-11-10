@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "dist"
 SITE = "https://hellonewyork.org"
 HUB = "/topics/"
+NEWS = "/news/"
 PAGE_SIZE = 12
 CATEGORIES = {
     "dmv": "DMV", "paperwork": "生活办事", "community": "华人生活",
@@ -108,15 +109,23 @@ def home_guide_categories():
 <p>图片已缩放并转换为 WebP。</p></details>
 </section>"""
 
-def shell(title, description, path, body, image="attractions", crumbs=(), article=None, script=""):
+def shell(title, description, path, body, image="attractions", crumbs=(), article=None, script="",
+          og_image=None, og_alt=None, news_item=None):
     full_title = f"{title}｜HelloNewYork.org"
     url = SITE + path
-    img = f"{SITE}/assets/{image}.webp"
+    img = og_image or f"{SITE}/assets/{image}.webp"
+    img_alt = og_alt or IMAGES[image]
     schema = []
     if crumbs:
         schema.append({"@context": "https://schema.org", "@type": "BreadcrumbList",
                        "itemListElement": [{"@type": "ListItem", "position": i, "name": label, "item": SITE + href}
                                            for i, (label, href) in enumerate(crumbs, 1)]})
+    if news_item:
+        schema.append({"@context": "https://schema.org", "@type": "NewsArticle", "headline": title,
+                       "description": description, "image": img, "url": url, "mainEntityOfPage": url,
+                       "inLanguage": "zh-CN", "datePublished": news_item["date"],
+                       "author": {"@type": "Organization", "name": "HelloNewYork.org", "url": SITE},
+                       "publisher": {"@type": "Organization", "name": "HelloNewYork.org", "url": SITE}})
     if article:
         schema.append({"@context": "https://schema.org", "@type": "Article", "headline": title,
                        "description": description, "image": img, "url": url, "mainEntityOfPage": url,
@@ -130,18 +139,18 @@ def shell(title, description, path, body, image="attractions", crumbs=(), articl
 <title>{e(full_title)}</title><meta name="description" content="{e(description)}">
 <link rel="canonical" href="{e(url)}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/icon-192.png">
-<link rel="stylesheet" href="/styles.css?v=20261116"><link rel="stylesheet" href="/article.css?v=20261114">
+<link rel="stylesheet" href="/styles.css?v=20261117"><link rel="stylesheet" href="/article.css?v=20261114">
 <meta property="og:type" content="{'article' if article else 'website'}"><meta property="og:locale" content="zh_CN">
 <meta property="og:title" content="{e(full_title)}"><meta property="og:description" content="{e(description)}">
 <meta property="og:url" content="{e(url)}"><meta property="og:image" content="{e(img)}">
-<meta property="og:image:alt" content="{e(IMAGES[image])}"><meta name="twitter:card" content="summary_large_image">
+<meta property="og:image:alt" content="{e(img_alt)}"><meta name="twitter:card" content="summary_large_image">
 {''.join(json_script(item) for item in schema)}
 </head><body class="article-main">
 <a class="skip" href="#main">跳到正文</a>
 {site_header()}
 {body}
 <footer><div class="wrap foot"><div><a class="foot-logo" href="/">HelloNewYork<span class="org-suffix">.org</span></a><p>你好，纽约 · 免费公益生活指南 · 无需注册。</p></div>
-<div class="footer-right"><a href="/topics/">纽约实用指南</a><a href="https://openaa.com/" target="_blank" rel="noopener">OpenAA.com ↗</a><span>© <span id="year">2026</span> HelloNewYork.org</span></div></div>
+<div class="footer-right"><a href="/news/">纽约资讯</a><a href="/topics/">纽约实用指南</a><a href="https://openaa.com/" target="_blank" rel="noopener">OpenAA.com ↗</a><span>© <span id="year">2026</span> HelloNewYork.org</span></div></div>
 <div class="wrap disclaimer">本站是独立的免费公益生活信息导航项目。办事要求、价格和开放时间以相关机构或服务方公布的信息为准。</div></footer>
 <script src="/script.js?v=20261115" defer></script>{script}
 </body></html>
@@ -212,6 +221,98 @@ def render_article(article, articles, resources):
 <div class="article-related-grid">{''.join(map(article_card, related))}</div></section></main>"""
     return shell(title, article["summary"], path, body, image, crumbs, article)
 
+def tabs_html(current=""):
+    items = [link("全部", HUB, **({"aria_current": "page"} if current == "" else {})),
+             link("纽约资讯", NEWS, **({"aria_current": "page"} if current == "news" else {}))]
+    items += [link(label, category_path(key), **({"aria_current": "page"} if key == current else {}))
+              for key, label in CATEGORIES.items()]
+    return "".join(items)
+
+
+def news_path(item):
+    return f"{NEWS}{item['slug']}/"
+
+
+def news_card(item):
+    return (f'<a class="news-card" href="{news_path(item)}">'
+            f'<img src="{e(item["image"])}" alt="{e(item["image_alt"])}" loading="lazy">'
+            f'<span class="news-card-copy"><small>{e(item["date"])}</small>'
+            f'<strong>{e(item["title"])}</strong></span></a>')
+
+
+def home_news(items):
+    return f"""<section class="section wrap home-news" aria-labelledby="home-news-heading">
+<div class="section-head"><h2 id="home-news-heading">纽约资讯</h2>
+{link("查看全部资讯 →", NEWS, **{"class": "home-guides-all"})}</div>
+<div class="home-news-grid">{''.join(map(news_card, items[:3]))}</div>
+</section>"""
+
+
+def render_news_list(items, number):
+    path = page_path(NEWS, number)
+    title = "纽约资讯" + (f" · 第 {number} 页" if number > 1 else "")
+    description = "OpenAA 发布的纽约资讯同步：住房抽签、取暖补贴、证件办理与社区事件，先看摘要和要点，全文在 OpenAA。"
+    crumbs = [("首页", "/"), ("纽约资讯", NEWS)]
+    if number > 1:
+        crumbs.append((f"第 {number} 页", path))
+    total = (len(items) + PAGE_SIZE - 1) // PAGE_SIZE
+    pages = "".join(link(i, page_path(NEWS, i), aria_label=f"第 {i} 页",
+                         **({"aria_current": "page"} if i == number else {})) for i in range(1, total + 1))
+    body = f"""<main class="wrap article-body" id="main"><header class="article-head">
+{breadcrumb(crumbs)}<h1>{e(title)}</h1><p class="article-intro">OpenAA 发布的纽约资讯，第一时间同步到这里：先看摘要和要点，再去 OpenAA 读全文和办理入口。</p></header>
+<nav class="hub-tabs" aria-label="指南与资讯栏目">{tabs_html("news")}</nav>
+<div class="hub-grid">{''.join(map(news_card, items[(number - 1) * PAGE_SIZE:number * PAGE_SIZE]))}</div>
+<nav class="hub-pages" aria-label="资讯分页"{'' if total > 1 else ' hidden'}>{pages}</nav>
+</main>"""
+    return shell(title, description, path, body, crumbs=crumbs,
+                 og_image=items[0]["image"] if items else None,
+                 og_alt=items[0]["image_alt"] if items else None)
+
+
+def render_news_item(item, items):
+    path = news_path(item)
+    title = item["title"]
+    crumbs = [("首页", "/"), ("纽约资讯", NEWS), (title, path)]
+    paragraphs = "".join(f"<p>{e(part)}</p>" for part in item["summary"].split("\n\n"))
+    points = ""
+    if item.get("points"):
+        points = ('<ul class="news-points">' + "".join(f"<li>{e(point)}</li>" for point in item["points"]) + "</ul>")
+    guide = ""
+    if item.get("guide"):
+        g = item["guide"]
+        guide = f'<p class="news-guide">相关指南：{link(g["label"], g["href"])}</p>'
+    others = [n for n in items if n["slug"] != item["slug"]][:3]
+    body = f"""<main class="wrap article-body" id="main"><header class="article-head">
+{breadcrumb(crumbs)}<h1>{e(title)}</h1><p class="article-meta">{e(item["date"])} · 来源：OpenAA</p></header>
+<nav class="hub-tabs" aria-label="指南与资讯栏目">{tabs_html("news")}</nav>
+<figure class="news-cover"><img src="{e(item["image"])}" alt="{e(item["image_alt"])}" fetchpriority="high"></figure>
+<div class="article-prose">{paragraphs}{points}
+<p class="news-cta">{link("去 OpenAA 看全文 →", item["url"], **{"class": "news-cta-btn"})}</p>
+{guide}</div>
+<section class="article-related"><h2>更多纽约资讯</h2><div class="hub-grid">{''.join(map(news_card, others))}</div></section>
+</main>"""
+    return shell(title, item["summary"], path, body, crumbs=crumbs,
+                 og_image=item["image"], og_alt=item["image_alt"], news_item=item)
+
+
+def validate_news(items):
+    seen = set()
+    for item in items:
+        for key in ("slug", "title", "date", "summary", "image", "image_alt", "url"):
+            if not item.get(key):
+                raise ValueError(f"News item missing {key}: {item.get('slug')}")
+        if item["slug"] in seen:
+            raise ValueError(f"Duplicate news slug: {item['slug']}")
+        seen.add(item["slug"])
+        date.fromisoformat(item["date"])
+        if not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", item["slug"]):
+            raise ValueError(f"Bad news slug: {item['slug']}")
+        if not item["url"].startswith("https://openaa.com/news/"):
+            raise ValueError(f"News url must be the OpenAA article: {item['url']}")
+        if not item["image"].startswith("https://"):
+            raise ValueError(f"News image must be an https URL: {item['image']}")
+
+
 def render_hub(articles, category, number):
     selected = [a for a in articles if not category or a["category"] == category]
     base = category_path(category)
@@ -222,8 +323,7 @@ def render_hub(articles, category, number):
     if number > 1:
         title += f" · 第 {number} 页"
         description += f" 第 {number} 页。"
-    navigation = "".join(link(label, category_path(key), **({"aria_current": "page"} if key == category else {}))
-                         for key, label in {"": "全部", **CATEGORIES}.items())
+    navigation = tabs_html(category)
     cards = "".join(map(article_card, selected[(number - 1) * PAGE_SIZE:number * PAGE_SIZE]))
     total = (len(selected) + PAGE_SIZE - 1) // PAGE_SIZE
     pages = "".join(link(i, page_path(base, i), aria_label=f"第 {i} 页",
@@ -241,7 +341,7 @@ def render_hub(articles, category, number):
 <div class="hub-grid" id="hub-grid">{cards}</div>
 <nav class="hub-pages" id="hub-pages" aria-label="指南分页"{'' if total > 1 else ' hidden'}>{pages}</nav>
 </main>"""
-    return shell(title, description, path, body, crumbs=crumbs, script='<script src="/topics.js" defer></script>')
+    return shell(title, description, path, body, crumbs=crumbs, script='<script src="/topics.js?v=20261110" defer></script>')
 
 def write(path, data):
     target = OUT / path.lstrip("/")
@@ -292,6 +392,9 @@ def build():
     articles = [article for row in zip_longest(*grouped) for article in row if article is not None]
     resources = json.loads((ROOT / "content/recommendation-resources.json").read_text(encoding="utf-8"))
     validate(articles, resources)
+    news = sorted(json.loads((ROOT / "content/news.json").read_text(encoding="utf-8")),
+                  key=lambda n: n["date"], reverse=True)
+    validate_news(news)
     if OUT.exists():
         shutil.rmtree(OUT)
     OUT.mkdir()
@@ -300,6 +403,7 @@ def build():
     for marker, content in (
         ("<!-- SITE_HEADER -->", site_header(homepage=True)),
         ("<!-- HOME_GUIDE_CATEGORIES -->", home_guide_categories()),
+        ("<!-- HOME_NEWS -->", home_news(news)),
     ):
         if homepage.count(marker) != 1:
             raise ValueError(f"Homepage must have exactly one marker: {marker}")
@@ -319,6 +423,14 @@ def build():
         path = article_path(a)
         write(path, render_article(a, articles, resources))
         urls[path] = a["updated"]
+    for number in range(1, (len(news) + PAGE_SIZE - 1) // PAGE_SIZE + 1):
+        path = page_path(NEWS, number)
+        write(path, render_news_list(news, number))
+        urls[path] = None
+    for item in news:
+        path = news_path(item)
+        write(path, render_news_item(item, news))
+        urls[path] = item["date"]
     write("/topics/index.json", json.dumps({
         "pageSize": PAGE_SIZE, "categories": CATEGORIES,
         "articles": [{**{key: a[key] for key in ("title", "summary", "category", "image", "keywords")},

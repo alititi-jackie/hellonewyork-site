@@ -279,3 +279,25 @@ html{scroll-padding-top:56px}
 .share-btn:hover{background:#f3f5f7}
 .share-tip{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(10px);background:#163b51;color:#fff;font-size:13px;font-weight:700;padding:9px 16px;border-radius:50px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:50}
 .share-tip.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* New York news (/news/): cards, cover, key points, OpenAA button */
+.news-card{display:block;position:relative;isolation:isolate;overflow:hidden;min-height:200px;border-radius:12px;background:#23495c;color:#fff;text-decoration:none}
+.news-card>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .3s}
+.news-card:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(5,25,35,.18),rgba(5,25,35,.8))}
+.news-card:hover>img{transform:scale(1.04)}
+.news-card-copy{position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:6px;padding:16px}
+.news-card-copy small{font-size:12px;opacity:.88}
+.news-card-copy strong{font-size:16px;line-height:1.45}
+.home-news-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.news-cover{margin:24px 0 4px}
+.news-cover img{display:block;width:100%;border-radius:12px}
+.news-points{margin:6px 0 0;padding-left:22px;color:#405b68;font-size:15px;line-height:2}
+.news-cta{margin:36px 0 6px;text-align:center}
+.news-cta-btn{display:inline-block;background:#a64e30;color:#fff;font-weight:700;font-size:16px;line-height:1.4;padding:13px 32px;border-radius:50px;text-decoration:none}
+.news-cta-btn:hover{background:#8c4527;color:#fff}
+.news-guide{font-size:14px;color:#4c6774}
+@media(max-width:700px){
+.home-news-grid{grid-template-columns:1fr}
+.news-card{min-height:180px}
+.news-points{font-size:14px}
+}

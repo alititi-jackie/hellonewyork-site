@@ -115,7 +115,7 @@
   });
   tabs.addEventListener('click', event => {
     const anchor = event.target.closest('a');
-    if (!anchor || event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (!anchor || anchor.pathname.startsWith('/news/') || event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
     const query = search.value.trim();
     history.pushState(null, '', anchor.pathname + (query ? '?' + new URLSearchParams({ q: query }) : ''));
