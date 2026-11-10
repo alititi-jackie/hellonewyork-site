@@ -145,5 +145,75 @@
     "source": "https://commons.wikimedia.org/wiki/File:NetfoneSIM.jpg",
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  "welcome-brooklyn-sign": {
+    "alt": "布鲁克林入口处的「Welcome to Brooklyn」路牌",
+    "credit": "Sledgeh101 at en.wikipedia",
+    "source": "https://commons.wikimedia.org/wiki/File:Welcome_to_Brooklyn_road_sign.jpg",
+    "license": "Public domain",
+    "license_url": ""
+  },
+  "driving-nyc-street": {
+    "alt": "纽约曼哈顿二大道街头行驶的汽车",
+    "credit": "MusikAnimal",
+    "source": "https://commons.wikimedia.org/wiki/File:Car_driving_over_Toynbee_tile_at_2nd_St_and_2nd_Ave_in_New_York_City_September_2012.jpg",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  "tax-form-1040": {
+    "alt": "美国联邦个人所得税 1040 表格",
+    "credit": "Plinskarch",
+    "source": "https://commons.wikimedia.org/wiki/File:Form_1040_-_tax.png",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  "notary-stamp-register": {
+    "alt": "盖有印章的公证登记文件",
+    "credit": "KingMarineWP",
+    "source": "https://commons.wikimedia.org/wiki/File:Notary_Public_Document_Register_with_Stamp_Tax.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  "nypl-reading-room": {
+    "alt": "纽约公共图书馆玫瑰主阅览室",
+    "credit": "Nan Palmero from San Antonio, TX, USA",
+    "source": "https://commons.wikimedia.org/wiki/File:New_York_Public_Library_Rose_Reading_Room_(40430027685).jpg",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0"
+  },
+  "used-car-lot": {
+    "alt": "美国二手车销售场停放的车辆",
+    "credit": "Infrogmation of New Orleans",
+    "source": "https://commons.wikimedia.org/wiki/File:Palmyra_back_from_Broad_-_used_car_lot,_Mid-City_New_Orleans_3.jpg",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0"
+  },
+  "airtrain-jamaica": {
+    "alt": "牙买加站的 JFK 机场捷运列车",
+    "credit": "Tdorante10",
+    "source": "https://commons.wikimedia.org/wiki/File:Jamaica_LIRR_td_(2018-05-04)_025_-_AirTrain_JFK.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  "met-museum-entrance": {
+    "alt": "大都会艺术博物馆第五大道正门",
+    "credit": "TheCatalyst31",
+    "source": "https://commons.wikimedia.org/wiki/File:Metropolitan_Museum_of_Art_main_building,_5th_Avenue_entrance_01.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  "nano-sim-tray": {
+    "alt": "手机 Nano SIM 卡与卡托特写",
+    "credit": "BwDraco",
+    "source": "https://commons.wikimedia.org/wiki/File:Nano_SIM_card_and_tray.jpg",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  "macys-herald-square": {
+    "alt": "纽约先驱广场的梅西百货旗舰店",
+    "credit": "Kidfly182",
+    "source": "https://commons.wikimedia.org/wiki/File:Macy%27s_Herald_Square_November_2024_003.jpg",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0"
   }
 }
