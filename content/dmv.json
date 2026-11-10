@@ -12,11 +12,11 @@
       "Green Light"
     ],
     "resource": [
-      "纽约州学习驾照申请入口",
-      "https://www.ny.gov/services/get-your-learner-permit"
+      "我的资料能办哪一种纽约驾照？",
+      "https://tools.openaa.com/usa/dmv/real-id-vs-standard-vs-enhanced.html"
     ],
     "published": "2026-11-08",
-    "updated": "2026-11-08",
+    "updated": "2026-11-09",
     "sections": [
       [
         "先选普通证件还是联邦合规证件",
@@ -83,11 +83,11 @@
       "地址证明"
     ],
     "resource": [
-      "DMV 原版 ID-44 证件材料表",
-      "https://dmv.ny.gov/forms/id44.pdf"
+      "纽约 DMV 6 Points 计算器",
+      "https://tools.openaa.com/usa/dmv/6-points-calculator.html"
     ],
     "published": "2026-11-08",
-    "updated": "2026-11-08",
+    "updated": "2026-11-09",
     "sections": [
       [
         "六分证明什么",
@@ -211,11 +211,11 @@
       "星标"
     ],
     "resource": [
-      "纽约州 DMV REAL ID 办理入口",
-      "https://dmv.ny.gov/realid"
+      "纽约 DMV REAL ID 检查器",
+      "https://tools.openaa.com/usa/dmv/real-id-checker.html"
     ],
     "published": "2026-11-08",
-    "updated": "2026-11-08",
+    "updated": "2026-11-09",
     "sections": [
       [
         "按你常用的场景选",
@@ -353,11 +353,11 @@
       "Driver Manual"
     ],
     "resource": [
-      "纽约 DMV 驾驶员手册与练习题",
-      "https://dmv.ny.gov/new-york-state-drivers-manual-practice-tests"
+      "OpenAA 纽约 DMV 中文题库练习",
+      "https://openaa.com/dmv"
     ],
     "published": "2026-11-08",
-    "updated": "2026-11-08",
+    "updated": "2026-11-09",
     "sections": [
       [
         "先按主题读手册",
@@ -395,6 +395,10 @@
       [
         "学习驾照正式申请",
         "https://www.ny.gov/services/get-your-learner-permit"
+      ],
+      [
+        "纽约 DMV 驾驶员手册与练习题",
+        "https://dmv.ny.gov/new-york-state-drivers-manual-practice-tests"
       ]
     ],
     "related": [

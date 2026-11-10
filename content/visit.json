@@ -13,11 +13,11 @@
       "中央公园"
     ],
     "resource": [
-      "纽约旅游局地图与行程指南",
-      "https://www.nyctourism.com/maps-guides/"
+      "纽约景点、品牌店与地铁地址导航",
+      "https://tools.openaa.com/usa/nyc-attractions/"
     ],
     "published": "2026-11-08",
-    "updated": "2026-11-08",
+    "updated": "2026-11-09",
     "sections": [
       [
         "第一天把中城集中走完",
@@ -59,6 +59,10 @@
       [
         "MTA 服务和行程",
         "https://www.mta.info/"
+      ],
+      [
+        "纽约旅游局地图与行程指南",
+        "https://www.nyctourism.com/maps-guides/"
       ]
     ],
     "related": [
@@ -216,11 +220,11 @@
       "纽约消费税"
     ],
     "resource": [
-      "纽约旅游局购物指南",
-      "https://www.nyctourism.com/things-to-do/shopping/"
+      "纽约品牌门店地址大全",
+      "https://tools.openaa.com/usa/brand-stores/"
     ],
     "published": "2026-11-08",
-    "updated": "2026-11-08",
+    "updated": "2026-11-09",
     "sections": [
       [
         "先按购物目的选商圈",
@@ -258,6 +262,10 @@
       [
         "纽约州服装鞋类销售税说明",
         "https://www.tax.ny.gov/pubs_and_bulls/tg_bulletins/st/clothing_and_footwear.htm"
+      ],
+      [
+        "纽约旅游局购物指南",
+        "https://www.nyctourism.com/things-to-do/shopping/"
       ]
     ],
     "related": [
@@ -281,11 +289,11 @@
       "游客"
     ],
     "resource": [
-      "MTA 票价和交通收费",
-      "https://www.mta.info/fares-tolls"
+      "纽约景点、品牌店与地铁地址导航",
+      "https://tools.openaa.com/usa/nyc-attractions/"
     ],
     "published": "2026-11-08",
-    "updated": "2026-11-08",
+    "updated": "2026-11-09",
     "sections": [
       [
         "到站先看线路、方向和终点",
