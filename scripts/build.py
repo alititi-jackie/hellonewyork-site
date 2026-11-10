@@ -38,6 +38,8 @@ def e(value):
 
 def link(label, href, **attrs):
     extra = "".join(f' {key.replace("_", "-")}="{e(value)}"' for key, value in attrs.items())
+    if href.startswith(("http://", "https://")) and "target" not in attrs:
+        extra += ' target="_blank" rel="noopener"'
     return f'<a href="{e(href)}"{extra}>{e(label)}</a>'
 
 def article_path(article):
@@ -147,7 +149,8 @@ def shell(title, description, path, body, image="attractions", crumbs=(), articl
 
 def card(href, title, image, label, priority=False):
     loading = 'fetchpriority="high"' if priority else 'loading="lazy"'
-    return (f'<a class="article-photo-card" href="{e(href)}"><img src="/assets/{image}.webp" '
+    blank = ' target="_blank" rel="noopener"' if href.startswith(("http://", "https://")) else ""
+    return (f'<a class="article-photo-card" href="{e(href)}"{blank}><img src="/assets/{image}.webp" '
             f'alt="{e(IMAGES[image])}" {loading}><span class="article-photo-copy">'
             f'<small>{e(label)}</small><strong>{e(title)}</strong></span></a>')
 
