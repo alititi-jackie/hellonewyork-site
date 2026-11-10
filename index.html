@@ -19,16 +19,35 @@
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>
-<!-- SITE_HEADER -->
+<header class="topbar"><div class="wrap nav">
+<a class="brand" href="#top" aria-label="HelloNewYork.org 首页"><span class="brandwords"><b>HelloNewYork<span class="org-suffix">.org</span></b><small>你好，纽约 · 免费公益生活指南</small></span></a>
+<nav aria-label="主导航"><a href="#start">初到纽约</a><a href="#life">生活指南</a><a href="#explore">城市探索</a><a href="#resources">实用资源</a></nav>
+<a class="nav-cta" href="https://go.openaa.com/" target="_blank" rel="noopener">Go.OpenAA</a>
+</div><nav class="mobile-nav" aria-label="手机栏目导航"><a href="#start">初到纽约</a><a href="#life">生活指南</a><a href="#explore">城市探索</a><a href="#resources">实用资源</a></nav></header>
 <main id="main">
 <section class="hero hero-full" id="top" aria-labelledby="hero-heading">
-<img class="hero-photo" src="./assets/hero.webp" alt="纽约曼哈顿天际线与布鲁克林大桥" width="1800" height="1100" fetchpriority="high">
+<div class="hero-slides" aria-hidden="true">
+<img class="hero-photo is-active" src="./assets/hero.webp" alt="" width="1800" height="1100" fetchpriority="high">
+<img class="hero-photo" src="./assets/hero-liberty.webp" alt="" width="2560" height="1707" loading="lazy" decoding="async">
+<img class="hero-photo" src="./assets/hero-times-square.webp" alt="" width="2560" height="1707" loading="lazy" decoding="async">
+<img class="hero-photo" src="./assets/hero-central-park.webp" alt="" width="2560" height="1707" loading="lazy" decoding="async">
+<img class="hero-photo" src="./assets/hero-brooklyn-bridge.webp" alt="" width="2560" height="1707" loading="lazy" decoding="async">
+<img class="hero-photo" src="./assets/hero-midtown.webp" alt="" width="2560" height="1707" loading="lazy" decoding="async">
+</div>
 <div class="wrap hero-overlay"><div class="hero-copy">
 <h1 id="hero-heading"><span class="hero-english">Hello New York<span class="hero-org">.org</span></span><span class="hero-slogan">让城市生活，<br>从这里开始。</span></h1>
 <div class="hero-rule" aria-hidden="true"></div>
 <p class="hero-text">从认识纽约，到融入纽约生活。精选真正用得上的办事指南、城市信息与便民工具，帮你更轻松地开启纽约生活。</p>
-</div></div></section>
-<!-- HOME_GUIDE_CATEGORIES -->
+</div></div>
+<div class="hero-dots" aria-label="大图切换">
+<button type="button" class="hero-dot is-active" aria-label="第 1 张：曼哈顿天际线与布鲁克林大桥"></button>
+<button type="button" class="hero-dot" aria-label="第 2 张：黄昏的自由女神与曼哈顿"></button>
+<button type="button" class="hero-dot" aria-label="第 3 张：时代广场夜景"></button>
+<button type="button" class="hero-dot" aria-label="第 4 张：中央公园弓桥"></button>
+<button type="button" class="hero-dot" aria-label="第 5 张：布鲁克林大桥步行道"></button>
+<button type="button" class="hero-dot" aria-label="第 6 张：曼哈顿中城高空全景"></button>
+</div>
+</section>
 <section class="section wrap" id="start"><div class="section-head"><div><h2>初到纽约 · 先办好这些事</h2></div></div>
 <div class="cards">
 <a class="photo-card" href="https://openaa.com/dmv" target="_blank" rel="noopener"><img src="./assets/dmv.webp" alt="纽约街头行驶的黄色出租车" width="850" height="638" loading="lazy"><div><h3>纽约驾照与 DMV</h3><p>驾照考试与证件办理</p></div><span class="photo-arrow" aria-hidden="true">↗</span></a>
@@ -43,7 +62,7 @@
 </div></div></section>
 <section class="section wrap" id="explore"><div class="section-head"><div><h2>走进纽约，发现更多精彩</h2></div></div><div class="explore-grid">
 <a class="feature big" href="https://tools.openaa.com/usa/nyc-attractions/" target="_blank" rel="noopener"><img src="./assets/attractions.webp" alt="夜色中的布鲁克林大桥与曼哈顿天际线" loading="lazy" width="1100" height="750"><div><h3>纽约热门景点</h3><p>从经典地标到值得走走的街区，开始你的城市探索。</p><span>探索景点 ↗</span></div></a>
-<a class="feature small" href="https://tools.openaa.com/usa/nyc-brands/" target="_blank" rel="noopener"><img src="./assets/shopping.webp" alt="纽约第五大道购物街道与行人" loading="lazy" width="900" height="750"><div><h3>品牌门店指南</h3><p>购物地点与门店信息。</p><span>查看门店 ↗</span></div></a>
+<a class="feature small" href="https://tools.openaa.com/usa/nyc-attractions/" target="_blank" rel="noopener"><img src="./assets/shopping.webp" alt="纽约第五大道购物街道与行人" loading="lazy" width="900" height="750"><div><h3>品牌门店指南</h3><p>购物地点与门店信息。</p><span>查看门店 ↗</span></div></a>
 </div></section>
 <section class="resources" id="resources"><div class="wrap resource-grid"><div><h2>重要信息，<br>从可靠来源开始。</h2><p>政府事务与政策要求可能变化。办理前请以相关机构官方网站的最新说明为准。</p></div><div class="resource-links">
 <a href="https://www.nyc.gov/" target="_blank" rel="noopener"><span>纽约市政府 NYC.gov</span><span>↗</span></a>
@@ -53,6 +72,6 @@
 </div></div></section>
 <section class="closing wrap"><h2>纽约很大，<br><i>你不必独自摸索。</i></h2><p>把重要的信息整理好，让每一次出发都更有方向。</p><a class="button primary" href="https://go.openaa.com/" target="_blank" rel="noopener">探索更多 OpenAA 资源 ↗</a></section>
 </main>
-<footer><div class="wrap foot"><div><a class="foot-logo" href="#top">HelloNewYork<span class="org-suffix">.org</span></a><p>你好，纽约 · 免费公益生活指南 · 无需注册。</p></div><div class="footer-right"><a href="/topics/">纽约实用指南</a><a href="https://openaa.com/" target="_blank" rel="noopener">OpenAA.com ↗</a><span>© <span id="year">2026</span> HelloNewYork.org</span></div></div><div class="wrap disclaimer">本站是独立的公益性质生活信息导航项目，免费提供信息入口；并非政府官方网站，亦不表示已取得税务认可的非营利组织身份。第三方链接内容由对应网站负责。</div></footer>
+<footer><div class="wrap foot"><div><a class="foot-logo" href="#top">HelloNewYork<span class="org-suffix">.org</span></a><p>你好，纽约 · 免费公益生活指南 · 无需注册。</p></div><div class="footer-right"><a href="https://openaa.com/" target="_blank" rel="noopener">OpenAA.com ↗</a><span>© <span id="year">2026</span> HelloNewYork.org</span></div></div><div class="wrap disclaimer">本站是独立的公益性质生活信息导航项目，免费提供信息入口；并非政府官方网站，亦不表示已取得税务认可的非营利组织身份。第三方链接内容由对应网站负责。首页轮播图片来自 Wikimedia Commons：SebastianBlumeArt、Nielson Caetano Salmeron、Christian David、Dietmar Rabich（CC BY / CC BY-SA）及 Josh Wilburne（CC0）。</div></footer>
 <script src="./script.js" defer></script>
 </body></html>
