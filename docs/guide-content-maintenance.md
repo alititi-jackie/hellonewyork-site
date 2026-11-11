@@ -65,5 +65,5 @@ HelloNewYork.org 的「纽约实用指南」是 OpenAA 系列网站的内容引�
 
 - 仓库根目录的 `index.html` 是**构建模板**，含有 `<!-- SITE_HEADER -->`、`<!-- HOME_GUIDE_CATEGORIES -->` 等占位标记，部署时由构建展开。页头、首页指南栏目区等是构建生成的，不要手改生成产物，要改就改 `scripts/build.py` 或模板本身。
 - 推任何文件前，先从仓库最新 HEAD 拉取，逐文件对比合并；**不要用本地旧克隆的整文件覆盖线上版本**（曾因此覆盖掉模板标记和新链接，当场返工修复）。
-- 改 `styles.css` 或 `script.js` 后，必须在**两处**同时更新引用版本号：一处是 `index.html` 里的首页引用，一处是 `scripts/build.py` 生成指南页时用的引用。只改一处，另一批页面会继续吃 CDN 旧缓存。
+- `styles.css`、`article.css`、`topics.js`、`script.js` 的引用版本号由构建按文件内容哈希自动生成（`scripts/build.py` 的 `versioned()`），改完文件直接构建即可，**不要再手改 `?v=` 数字**。
 - `styles.css` 后段有一组后加的覆盖规则，新增样式一律追加到文件**最末尾**才保证生效。
