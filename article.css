@@ -49,3 +49,7 @@
 .detail-col .article-intro{max-width:none}
 .detail-col .article-prose{max-width:none;margin:42px 0}
 .detail-col .article-note{max-width:none;margin:40px 0}
+
+/* 资讯页：相关指南贴近下方分隔线 */
+.detail-col .news-prose{margin-bottom:8px}
+.news-guide{margin-bottom:0}

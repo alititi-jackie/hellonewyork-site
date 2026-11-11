@@ -139,7 +139,7 @@ def shell(title, description, path, body, image="attractions", crumbs=(), articl
 <title>{e(full_title)}</title><meta name="description" content="{e(description)}">
 <link rel="canonical" href="{e(url)}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/icon-192.png">
-<link rel="stylesheet" href="/styles.css?v=20261122"><link rel="stylesheet" href="/article.css?v=20261118">
+<link rel="stylesheet" href="/styles.css?v=20261122"><link rel="stylesheet" href="/article.css?v=20261123">
 <meta property="og:type" content="{'article' if article else 'website'}"><meta property="og:locale" content="zh_CN">
 <meta property="og:title" content="{e(full_title)}"><meta property="og:description" content="{e(description)}">
 <meta property="og:url" content="{e(url)}"><meta property="og:image" content="{e(img)}">
@@ -286,7 +286,7 @@ def render_news_item(item, items):
 {breadcrumb(crumbs)}<h1>{e(title)}</h1><p class="article-meta">{e(item["date"])} · 来源：OpenAA</p></header>
 <nav class="hub-tabs" aria-label="指南与资讯栏目">{tabs_html("news")}</nav>
 <figure class="news-cover"><img src="{e(item["image"])}" alt="{e(item["image_alt"])}" fetchpriority="high"></figure>
-<div class="article-prose">{paragraphs}{points}
+<div class="article-prose news-prose">{paragraphs}{points}
 <p class="news-more">{link("去 OpenAA查看全文", item["url"])}</p>
 {guide}</div>
 <section class="article-related"><h2>更多纽约资讯</h2><div class="hub-grid">{''.join(map(news_card, others))}</div></section>
