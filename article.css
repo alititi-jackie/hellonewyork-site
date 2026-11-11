@@ -39,3 +39,13 @@
 /* Slimmer category tab bar */
 .hub-tabs{padding:3px 4px;margin:0 0 12px}
 .hub-tabs a{padding:5px 11px;font-size:14px}
+
+/* 详情页列宽对齐 openaa（560/760/960/1040），图与文字同列同宽 */
+.detail-col{width:min(100% - 48px,560px)}
+@media(min-width:768px){.detail-col{width:min(100% - 48px,760px)}}
+@media(min-width:1024px){.detail-col{width:min(100% - 48px,960px)}}
+@media(min-width:1280px){.detail-col{width:min(100% - 48px,1040px)}}
+.detail-col .article-head h1{max-width:none}
+.detail-col .article-intro{max-width:none}
+.detail-col .article-prose{max-width:none;margin:42px 0}
+.detail-col .article-note{max-width:none;margin:40px 0}

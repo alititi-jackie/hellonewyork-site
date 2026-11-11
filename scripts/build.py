@@ -74,7 +74,7 @@ def site_header(homepage=False):
                    else link("实用指南", f"{anchor_prefix}#guides", aria_current="page"))
     nav = guides_link + "".join(link(label, f"{anchor_prefix}#{section}") for section, label in sections)
     return f"""<header class="topbar"><div class="wrap nav">
-<a class="brand" href="{home_href}" aria-label="HelloNewYork.org 首页"><span class="brandwords"><b>HelloNewYork<span class="org-suffix">.org</span></b><small>你好，纽约 · 免费公益生活指南</small></span></a>
+<a class="brand" href="{home_href}" aria-label="HelloNewYork.org 首页"><img class="brand-logo" src="/favicon.svg" alt="HelloNewYork.org" width="36" height="36"><span class="brandwords"><b>HelloNewYork<span class="org-suffix">.org</span></b><small>你好，纽约 · 免费公益生活指南</small></span></a>
 <nav aria-label="主导航">{nav}</nav>
 <span class="nav-actions"><a class="nav-cta" href="https://go.openaa.com/" target="_blank" rel="noopener">Go.OpenAA</a><button class="share-btn" type="button" aria-label="分享这个页面"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg></button></span>
 </div></header><nav class="mobile-nav" aria-label="手机栏目导航">{nav}</nav>"""
@@ -139,7 +139,7 @@ def shell(title, description, path, body, image="attractions", crumbs=(), articl
 <title>{e(full_title)}</title><meta name="description" content="{e(description)}">
 <link rel="canonical" href="{e(url)}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/icon-192.png">
-<link rel="stylesheet" href="/styles.css?v=20261117"><link rel="stylesheet" href="/article.css?v=20261114">
+<link rel="stylesheet" href="/styles.css?v=20261119"><link rel="stylesheet" href="/article.css?v=20261118">
 <meta property="og:type" content="{'article' if article else 'website'}"><meta property="og:locale" content="zh_CN">
 <meta property="og:title" content="{e(full_title)}"><meta property="og:description" content="{e(description)}">
 <meta property="og:url" content="{e(url)}"><meta property="og:image" content="{e(img)}">
@@ -149,7 +149,7 @@ def shell(title, description, path, body, image="attractions", crumbs=(), articl
 <a class="skip" href="#main">跳到正文</a>
 {site_header()}
 {body}
-<footer><div class="wrap foot"><div><a class="foot-logo" href="/">HelloNewYork<span class="org-suffix">.org</span></a><p>你好，纽约 · 免费公益生活指南 · 无需注册。</p></div>
+<footer><div class="wrap foot"><div><a class="foot-logo" href="/"><img class="foot-logo-img" src="/favicon.svg" alt="HelloNewYork.org" width="28" height="28">HelloNewYork<span class="org-suffix">.org</span></a><p>你好，纽约 · 免费公益生活指南 · 无需注册。</p></div>
 <div class="footer-right"><a href="/news/">纽约资讯</a><a href="/topics/">纽约实用指南</a><a href="https://openaa.com/" target="_blank" rel="noopener">OpenAA.com ↗</a><span>© <span id="year">2026</span> HelloNewYork.org</span></div></div>
 <div class="wrap disclaimer">本站是独立的免费公益生活信息导航项目。办事要求、价格和开放时间以相关机构或服务方公布的信息为准。</div></footer>
 <script src="/script.js?v=20261115" defer></script>{script}
@@ -210,7 +210,7 @@ def render_article(article, articles, resources):
             related.append(candidate)
     next_steps = "".join(f"<li>{link(a['title'], article_path(a))}</li>" for a in direct)
     next_steps = f"<section><h2>接下来可以看</h2><ul>{next_steps}</ul></section>" if next_steps else ""
-    body = f"""<main class="wrap article-body" id="main"><article>
+    body = f"""<main class="wrap article-body detail-col" id="main"><article>
 <header class="article-head">{breadcrumb(crumbs)}<h1>{e(title)}</h1><p class="article-intro">{e(article['summary'])}</p>
 <p class="article-meta">最近核查 <time datetime="{article['updated']}">{article['updated']}</time></p></header>
 {resource}{credit}
@@ -282,7 +282,7 @@ def render_news_item(item, items):
         g = item["guide"]
         guide = f'<p class="news-guide">相关指南：{link(g["label"], g["href"])}</p>'
     others = [n for n in items if n["slug"] != item["slug"]][:3]
-    body = f"""<main class="wrap article-body" id="main"><header class="article-head">
+    body = f"""<main class="wrap article-body detail-col" id="main"><header class="article-head">
 {breadcrumb(crumbs)}<h1>{e(title)}</h1><p class="article-meta">{e(item["date"])} · 来源：OpenAA</p></header>
 <nav class="hub-tabs" aria-label="指南与资讯栏目">{tabs_html("news")}</nav>
 <figure class="news-cover"><img src="{e(item["image"])}" alt="{e(item["image_alt"])}" fetchpriority="high"></figure>
