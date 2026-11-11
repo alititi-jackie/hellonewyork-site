@@ -299,7 +299,7 @@ def render_news_item(item, items):
     body = f"""<main class="wrap article-body detail-col" id="main"><header class="article-head">
 {breadcrumb(crumbs)}<h1>{e(title)}</h1><p class="article-meta">{e(item["date"])} · 来源：OpenAA</p></header>
 <nav class="hub-tabs" aria-label="指南与资讯栏目">{tabs_html("news")}</nav>
-<figure class="news-cover"><img src="{e(item["image"])}" alt="{e(item["image_alt"])}" fetchpriority="high"></figure>
+<figure class="news-cover"><a href="{e(item["url"])}" target="_blank" rel="noopener" aria-label="{e(item["title"])}"><img src="{e(item["image"])}" alt="{e(item["image_alt"])}" fetchpriority="high"></a></figure>
 <div class="article-prose news-prose">{paragraphs}{points}
 <p class="news-more">{link("去 OpenAA查看全文", item["url"])}</p>
 {guide}</div>
