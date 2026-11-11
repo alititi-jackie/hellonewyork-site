@@ -1,4 +1,5 @@
 """Build the Pages artifact from the homepage and structured guide sources."""
+import hashlib
 import html
 import json
 import re
@@ -12,6 +13,19 @@ from xml.sax.saxutils import escape as xml
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "dist"
 SITE = "https://hellonewyork.org"
+
+def _asset_hashes():
+    return {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest()[:8]
+            for name in ("styles.css", "article.css", "topics.js", "script.js")}
+
+
+ASSET_V = _asset_hashes()
+
+
+def versioned(document):
+    for name, version in ASSET_V.items():
+        document = re.sub(re.escape(name) + r"\?v=[0-9a-z]+", f"{name}?v={version}", document)
+    return document
 HUB = "/topics/"
 NEWS = "/news/"
 PAGE_SIZE = 12
@@ -133,7 +147,7 @@ def shell(title, description, path, body, image="attractions", crumbs=(), articl
                        "datePublished": article["published"], "dateModified": article["updated"],
                        "author": {"@type": "Organization", "name": "HelloNewYork.org", "url": SITE},
                        "publisher": {"@type": "Organization", "name": "HelloNewYork.org", "url": SITE}})
-    return f"""<!doctype html>
+    return versioned(f"""<!doctype html>
 <html lang="zh-CN"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(full_title)}</title><meta name="description" content="{e(description)}">
@@ -154,7 +168,7 @@ def shell(title, description, path, body, image="attractions", crumbs=(), articl
 <div class="wrap disclaimer">本站是独立的免费公益生活信息导航项目。办事要求、价格和开放时间以相关机构或服务方公布的信息为准。</div></footer>
 <script src="/script.js?v=20261115" defer></script>{script}
 </body></html>
-"""
+""")
 
 def card(href, title, image, label, priority=False):
     loading = 'fetchpriority="high"' if priority else 'loading="lazy"'
@@ -408,7 +422,7 @@ def build():
         if homepage.count(marker) != 1:
             raise ValueError(f"Homepage must have exactly one marker: {marker}")
         homepage = homepage.replace(marker, content)
-    write("/", homepage)
+    write("/", versioned(homepage))
     for name in ("styles.css", "article.css", "topics.js", "script.js", "site.webmanifest",
                  "favicon.svg", "favicon.ico", "favicon-32.png", "icon-192.png", "icon-512.png", "og-image.jpg", "robots.txt"):
         shutil.copyfile(ROOT / name, OUT / name)
@@ -445,6 +459,14 @@ def build():
                       f'<meta http-equiv="refresh" content="0;url={e(target)}"><link rel="canonical" href="{SITE}{e(target)}">'
                       f'<title>指南已迁移｜HelloNewYork.org</title></head><body><main><h1>这篇指南已迁移</h1>'
                       f'{link("打开新版指南", target)}</main></body></html>')
+    not_found = shell("页面没找到", "这个网址没有对应的页面，可能链接已经移动。", "/404.html",
+                      '<main class="wrap article-body detail-col" id="main"><header class="article-head">'
+                      '<h1>页面没找到</h1><p class="article-intro">这个网址没有对应的页面，链接可能写错了，或者内容已经移动。</p></header>'
+                      '<div class="article-prose"><p>可以回到<a href="/">首页</a>，或者去<a href="/topics/">纽约实用指南</a>、'
+                      '<a href="/news/">纽约资讯</a>里找你要的信息。</p></div></main>')
+    not_found = not_found.replace(f'<link rel="canonical" href="{SITE}/404.html">',
+                                  '<meta name="robots" content="noindex">')
+    (OUT / "404.html").write_text(not_found, encoding="utf-8")
     sitemap = "\n".join(f"<url><loc>{xml(SITE + path)}</loc>{f'<lastmod>{updated}</lastmod>' if updated else ''}</url>"
                         for path, updated in urls.items())
     write("/sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n'
