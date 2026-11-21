@@ -90,7 +90,7 @@ def site_header(homepage=False):
     return f"""<header class="topbar"><div class="wrap nav">
 <a class="brand" href="{home_href}" aria-label="HelloNewYork.org 首页"><img class="brand-logo" src="/favicon.svg" alt="HelloNewYork.org" width="36" height="36"><span class="brandwords"><b>HelloNewYork<span class="org-suffix">.org</span></b><small>你好，纽约 · 免费公益生活指南</small></span></a>
 <nav aria-label="主导航">{nav}</nav>
-<span class="nav-actions"><a class="nav-cta" href="https://go.openaa.com/" target="_blank" rel="noopener">Go.OpenAA</a><button class="share-btn" type="button" aria-label="分享这个页面"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg></button></span>
+<span class="nav-actions"><a class="nav-cta" href="https://go.openaa.com/" target="_blank" rel="noopener">Go.<span style="color:#2563eb">Open</span>AA</a><button class="share-btn" type="button" aria-label="分享这个页面"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg></button></span>
 </div></header><nav class="mobile-nav" aria-label="手机栏目导航">{nav}</nav>"""
 
 def home_guide_categories():
