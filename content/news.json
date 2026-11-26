@@ -1,6 +1,20 @@
 [
   {
     "date": "2026-11-26",
+    "image": "https://img.openaa.com/img/news/thanksgiving-thank-you-letter.webp",
+    "image_alt": "华人家庭在感恩节餐桌前手牵手感恩",
+    "points": [
+      "谢谢每一位在 OpenAA 找工作、发招聘、贴房源、分享生活经验的用户",
+      "这一年 OpenAA 上线了新闻，做了 DMV 中文题库、生活工具和每日英语",
+      "招聘、房屋、二手、本地服务这四件事，接下来一件一件做扎实"
+    ],
+    "slug": "thanksgiving-thank-you-letter",
+    "summary": "感恩节这天，OpenAA 写了一封信给每一位用户：谢谢你发出的每一条招聘、房源和分享。这个平台没有什么高深的东西，就是靠大家一条一条把信息发出来，才慢慢有了今天的样子。",
+    "title": "感恩节，OpenAA 想对你说声谢谢",
+    "url": "https://openaa.com/news/thanksgiving-thank-you-letter"
+  },
+  {
+    "date": "2026-11-26",
     "image": "https://img.openaa.com/img/news/snap-work-requirements-ny.webp",
     "image_alt": "社会服务局工作人员向申请人发放 EBT 卡",
     "points": [
