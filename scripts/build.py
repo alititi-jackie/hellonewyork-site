@@ -266,6 +266,8 @@ def render_news_list(items, number):
     path = page_path(NEWS, number)
     title = "纽约资讯" + (f" · 第 {number} 页" if number > 1 else "")
     description = "OpenAA 发布的纽约资讯同步：住房抽签、取暖补贴、证件办理与社区事件，先看摘要和要点，全文在 OpenAA。"
+    if number > 1:
+        description += f" 第 {number} 页。"
     crumbs = [("首页", "/"), ("纽约资讯", NEWS)]
     if number > 1:
         crumbs.append((f"第 {number} 页", path))
